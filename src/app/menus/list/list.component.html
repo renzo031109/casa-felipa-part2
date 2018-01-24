@@ -1,0 +1,35 @@
+<mat-progress-spinner color="accent" mode="indeterminate" [style.display]="spinnerVisibility"
+            class="spinner">
+</mat-progress-spinner>
+
+<div fxLayout="column" fxFlex *ngIf="menusList?.length > 0; else noMenu">
+  <h2 class="page-title">Menu List Page</h2>
+  <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
+
+    <mat-card class="menu-card" *ngFor="let menu of menusList">
+      <img mat-card-image [src]="menu.image">
+      <p>{{menu.name}}</p>
+      <mat-card-actions>
+        <button mat-button> DETAIL </button>
+        <button mat-button (click)="deleteMenu($event,menu.id)"> DELETE </button>        
+      </mat-card-actions>
+    </mat-card>
+  </section>
+</div>
+
+
+<!-- <div *ngIf="menus?.length > 0; else noItems">
+  <ul *ngFor="let menu of menus" class="collection">
+    <li class="collection-item"><strong>{{menu.name}}:
+      </strong> {{menu.description}} id: {{menu.code}}      
+    </li>
+  </ul>
+</div> -->
+
+<ng-template #noMenu>
+  <hr>
+  <h5>there was no items to list</h5>
+</ng-template>
+
+
+

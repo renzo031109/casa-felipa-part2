@@ -1,0 +1,30 @@
+<div fxLayout="column" fxFlex>
+    <h2 class="page-title">Menu List Master Detail Page</h2>
+    <mat-sidenav-container flexLayout-="row" fxFlex class="menus-list">
+      <mat-sidenav mode="side" opened>
+        <mat-nav-list>
+          <mat-list-item *ngFor="let menu of menusList" (click)="selectedMenu = menu">
+            <img mat-list-avatar [src]="menu.coverImage" />
+            <h2 mat-line>{{menu.title}}</h2>
+            <p mat-line> {{menu.authors}} </p>
+          </mat-list-item>
+        </mat-nav-list>
+      </mat-sidenav>
+      <div class="menus-list-item" fxFlex>
+        <div *ngIf="selectedMenu" class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
+          <div class="menus-list-item--coverimage">
+            <img [src]="selectedMenu.coverImage" />
+          </div>
+          <div class="menus-list-item--content" fxFlex>
+            <h3>{{selectedMenu.title}}</h3>
+            <p>{{selectedMenu.authors}}</p>
+            <p>{{selectedMenu.published}}</p>
+            <p>ISBN: {{selectedMenu.isbn}}</p>
+            <p>{{selectedMenu.description}}</p>
+          </div>
+        </div>
+      </div>
+    </mat-sidenav-container>
+  </div>
+  
+  

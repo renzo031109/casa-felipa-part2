@@ -1,0 +1,28 @@
+<div fxLayout="column" fxFlex>
+
+  <mat-toolbar color="accent">
+
+    <span><img src="../assets/casa-felipa-logo.jpg" class="casa-felipa-logo"></span> 
+    <span class="spacer"></span>
+
+    <button mat-icon-button (click)="sidenav.toggle()">
+      <mat-icon>menu</mat-icon>      
+    </button>     
+    <button mat-mini-fab (click)="openAddMenuDialog()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-toolbar>
+ 
+  <mat-sidenav-container fxFlex>
+    <mat-sidenav mode="over" #sidenav>
+      <mat-nav-list>
+        <a mat-list-item [href]="link.path" *ngFor="let link of links"> {{ link.name }} </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="content" fxLayout="column" fxFlex>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-container>
+
+</div>
+

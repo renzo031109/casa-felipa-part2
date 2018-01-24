@@ -1,0 +1,23 @@
+md-sidenav {
+  width: 300px;
+}
+mat-toolbar{
+  height:75px;
+}
+
+.master-detail-container {
+  height: calc(100vh - 113px);
+  overflow: hidden;
+  padding: 1rem;
+}
+
+.books-list-container {
+  height: 100%;
+  padding: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.casa-felipa-logo{
+  margin-top:8px;
+}
