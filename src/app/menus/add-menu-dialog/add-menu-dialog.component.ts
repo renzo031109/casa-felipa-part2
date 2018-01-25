@@ -13,10 +13,20 @@ import { UploadService } from '../upload.service';
 export class AddMenuDialogComponent implements OnInit {
 
   selectedFiles: FileList;
-  currentUpload: Upload;
+  // currentUpload: Upload;
   progress: {percentage: number} = {percentage: 0}
 
- 
+  currentUpload: Upload = {
+    $key: '',
+    menuName: '',
+    description: '',
+    group: '',
+    price: 0,
+    file: null,
+    name: '',
+    url: '',
+    progress: 0
+  };
 
   constructor(private dialogRef: MatDialogRef<AddMenuDialogComponent>,
               private upSvc: UploadService) { }
@@ -32,7 +42,7 @@ export class AddMenuDialogComponent implements OnInit {
     const file = this.selectedFiles.item(0);
     this.currentUpload = new Upload(file);
     this.upSvc.pushUpload(this.currentUpload, this.progress);
+    console.log(this.currentUpload);
   }
 
-////
 }

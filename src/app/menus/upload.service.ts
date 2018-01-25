@@ -11,9 +11,9 @@ export class UploadService {
 
   constructor(private db: AngularFireDatabase) { }
 
-  pushUpload(upload: Upload, progress: {percentage: number}) {
+  pushUpload(uploads: Upload, progress: {percentage: number}) {
     const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef.child(`${this.basePath}/${upload.file.name}`).put(upload.file);
+    const uploadTask = storageRef.child(`${this.basePath}/${uploads.file.name}`).put(uploads.file);
 
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) =>  {
@@ -27,16 +27,16 @@ export class UploadService {
       },
       () => {
         // upload success
-        upload.url = uploadTask.snapshot.downloadURL;
-        upload.name = upload.file.name;
-        upload.menuName = upload.name;
-        upload.description = upload.description;
-        this.saveFileData(upload);
+        uploads.url = uploadTask.snapshot.downloadURL;
+        uploads.name = uploads.file.name;
+        // upload.menuName = upload.menuName;
+        // upload.description = upload.description;
+        this.saveFileData(uploads);
       }
     );
   }
   // Writes the file details to the realtime db
-  private saveFileData(upload: Upload) {
-    this.db.list(`${this.basePath}/`).push(upload);
+  private saveFileData(uploads: Upload) {
+    this.db.list(`${this.basePath}/`).push(uploads);
   }
 }

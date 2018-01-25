@@ -4,7 +4,7 @@ export class Upload {
   menuName: string;
   description: string;
   group: string;
-  price: string;
+  price: number;
 
   file: File;
   name: string;
