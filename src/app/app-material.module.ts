@@ -15,7 +15,8 @@ import {
   MatRadioModule,
   MatCheckboxModule,
   MatSlideToggleModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatFormFieldModule
 
 } from '@angular/material';
 
@@ -35,7 +36,8 @@ const MATERIAL_MODULES = [
   MatRadioModule,
   MatCheckboxModule,
   MatSlideToggleModule,
-  MatProgressBarModule
+  MatProgressBarModule,
+  MatFormFieldModule
  
 ];
 

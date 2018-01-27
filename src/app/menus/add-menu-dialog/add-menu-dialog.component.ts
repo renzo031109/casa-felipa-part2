@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { Upload } from '../models/upload';
 import { UploadService } from '../upload.service';
@@ -12,37 +13,39 @@ import { UploadService } from '../upload.service';
 })
 export class AddMenuDialogComponent implements OnInit {
 
-  selectedFiles: FileList;
-  // currentUpload: Upload;
-  progress: {percentage: number} = {percentage: 0}
+  // selectedFiles: FileList;
+  // // currentUpload: Upload;
+  // progress: {percentage: number} = {percentage: 0}
 
-  currentUpload: Upload = {
-    $key: '',
-    menuName: '',
-    description: '',
-    group: '',
-    price: 0,
-    file: null,
-    name: '',
-    url: '',
-    progress: 0
-  };
+ 
+    menuName: string;
+    description: string;
+    group: string;
+    price: number;
+    image: any;
+
 
   constructor(private dialogRef: MatDialogRef<AddMenuDialogComponent>,
-              private upSvc: UploadService) { }
+              private uploadService: UploadService) { }
 
   ngOnInit() {
   }
 
-  detectFiles(event) {
-      this.selectedFiles = event.target.files;
-  }
 
-  uploadSingle() {
-    const file = this.selectedFiles.item(0);
-    this.currentUpload = new Upload(file);
-    this.upSvc.pushUpload(this.currentUpload, this.progress);
-    console.log(this.currentUpload);
+
+  // detectFiles(event) {
+  //     this.selectedFiles = event.target.files;
+  // }
+
+  // uploadSingle() {
+  //   const file = this.selectedFiles.item(0);
+  //   this.currentUpload = new Upload(file);
+  //   this.upSvc.pushUpload(this.currentUpload, this.progress);
+  //   console.log(this.currentUpload);
+  // }
+
+  onSubmit() {
+    console.log(this.menuName);
   }
 
 }
