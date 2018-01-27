@@ -17,7 +17,6 @@ export class AddMenuDialogComponent implements OnInit {
   // // currentUpload: Upload;
   // progress: {percentage: number} = {percentage: 0}
 
- 
     menuName: string;
     description: string;
     group: string;
@@ -45,7 +44,15 @@ export class AddMenuDialogComponent implements OnInit {
   // }
 
   onSubmit() {
-    console.log(this.menuName);
+   let listing = {
+    menuName: this.menuName,
+    description: this.description,
+    group: this.group,
+    price: this.price
+   };
+   console.log(listing);
+   this.uploadService.addListing(listing);
+
   }
 
 }

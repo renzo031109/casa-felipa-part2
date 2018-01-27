@@ -13,7 +13,6 @@ import { MatSnackBar } from '@angular/material';
 export class ListComponent {
 
 
-
   // menusList: Menus[] = [];
   // spinnerVisibility = 'block';
 

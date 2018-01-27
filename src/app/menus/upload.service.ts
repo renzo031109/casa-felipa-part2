@@ -1,42 +1,54 @@
 import { Injectable } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import * as firebase from 'firebase';
 import { Upload } from './models/upload';
+import 'firebase/storage';
 
 @Injectable()
 export class UploadService {
+  listings: AngularFireList<any[]>;
+  listing: AngularFireObject<any[]>;
+  folder: any;
 
-  private basePath: string = '/uploads';
-  uploads: AngularFireList<Upload[]>;
-
-  constructor(private db: AngularFireDatabase) { }
-
-  pushUpload(uploads: Upload, progress: {percentage: number}) {
-    const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef.child(`${this.basePath}/${uploads.file.name}`).put(uploads.file);
-
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      (snapshot) =>  {
-        // upload in progress
-        const snap = snapshot as firebase.storage.UploadTaskSnapshot;
-        progress.percentage = Math.round((snap.bytesTransferred / snap.totalBytes) * 100); 
-      },
-      (error) => {
-        // upload failed
-        console.log(error);
-      },
-      () => {
-        // upload success
-        uploads.url = uploadTask.snapshot.downloadURL;
-        uploads.name = uploads.file.name;
-        // upload.menuName = upload.menuName;
-        // upload.description = upload.description;
-        this.saveFileData(uploads);
-      }
-    );
+  constructor(private af: AngularFireDatabase) {
+    this.folder = 'listingimages';
+    this.listings = this.af.list('/listings') as AngularFireList<Listing[]>;
   }
-  // Writes the file details to the realtime db
-  private saveFileData(uploads: Upload) {
-    this.db.list(`${this.basePath}/`).push(uploads);
+
+  getListings() {
+    this.listings = this.af.list('/listings') as AngularFireList<Listing[]>;
+    return this.listings;
   }
+
+  // getListingDetails(id) {
+  //   this.listing = this.af.object('/listings/' + id) as AngularFireObject<Listing>;
+  //   return this.listing;
+  // }
+
+  addListing(listing) {
+    // this.listings = this.af.list('/listings') as AngularFireList<Listing[]>;
+    // Create root ref
+    let storageRef = firebase.storage().ref();
+    for(let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]){
+      let path = `/${this.folder}/${selectedFile.name}`;
+      let iRef = storageRef.child(path);
+      iRef.put(selectedFile).then((snapshot) => {
+        listing.image = selectedFile.name;
+        listing.path = path;
+        return this.listings.push(listing);
+        // console.log(listing);
+      });
+    }
+  }
+
 }
+
+interface Listing {
+
+  menuName?: string;
+  description?: string;
+  group?: string;
+  price?: number;
+  image?: any;
+
+ }
