@@ -1,16 +1,37 @@
-import { Component } from '@angular/core';
-import { Menus } from '../Menus';
-import { MenuStoreService } from '../menus-store.service';
-
+import { Component,OnInit } from '@angular/core';
+// import { Menus } from '../Menus';
+// import { MenuStoreService } from '../menus-store.service';
+import { GalleryImages } from '../models/galleryImages';
+import { ListingsService } from '../service/listings.service';
+// import { UploadService } from '../upload.service';
+import { Observable } from 'rxjs/Observable';
+import { AngularFireDatabase } from 'angularfire2/database';
 
 import { MatSnackBar } from '@angular/material';
+import { AngularFireList } from 'angularfire2/database/interfaces';
 
 @Component({
   selector: 'app-list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent {
+export class ListComponent implements OnInit{
+
+  menusList: AngularFireList<GalleryImages[]>;
+
+  constructor(private listingService: ListingsService) { }
+ 
+  ngOnInit() {
+    this.getMenus();
+    console.log(this.menusList);
+  }
+
+  getMenus() {
+    this.listingService.getImages().query(listings => {
+      console.log(listings);
+      this.listings = listings;
+  }
+
 
 
   // menusList: Menus[] = [];

@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { MatDialogRef } from '@angular/material';
 import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
-import { Upload } from '../models/upload';
+import { Listing } from '../models/listing';
 import { UploadService } from '../upload.service';
 
 @Component({
@@ -11,23 +11,30 @@ import { UploadService } from '../upload.service';
   templateUrl: './add-menu-dialog.component.html',
   styleUrls: ['./add-menu-dialog.component.scss']
 })
-export class AddMenuDialogComponent implements OnInit {
+export class AddMenuDialogComponent implements OnInit,OnChanges {
 
   // selectedFiles: FileList;
   // // currentUpload: Upload;
   // progress: {percentage: number} = {percentage: 0}
 
-    menuName: string;
-    description: string;
-    group: string;
-    price: number;
-    image: any;
+  menuName: string;
+  description: string;
+  group: string;
+  price: number;
+  image: any;
+  button: boolean = false;
 
 
   constructor(private dialogRef: MatDialogRef<AddMenuDialogComponent>,
-              private uploadService: UploadService) { }
+    private uploadService: UploadService) { }
 
   ngOnInit() {
+
+
+  }
+
+  ngOnChanges(){
+
   }
 
 
@@ -44,14 +51,14 @@ export class AddMenuDialogComponent implements OnInit {
   // }
 
   onSubmit() {
-   let listing = {
-    menuName: this.menuName,
-    description: this.description,
-    group: this.group,
-    price: this.price
-   };
-   console.log(listing);
-   this.uploadService.addListing(listing);
+    let listing = {
+      menuName: this.menuName,
+      description: this.description,
+      group: this.group,
+      price: this.price
+    };    
+    console.log(listing);
+    this.uploadService.addListing(listing);
 
   }
 

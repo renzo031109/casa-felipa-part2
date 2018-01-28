@@ -24,6 +24,9 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { UploadService } from 'app/menus/upload.service';
+import { ListingsService } from 'app/menus/service/listings.service';
+
+// import { HttpClientModule } from '@angular/common/http'; 
 
 
 const routes: Routes = [
@@ -44,6 +47,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     HttpModule,
+    // HttpClientModule,
     BrowserAnimationsModule,
     FlexLayoutModule,
     AppMaterialModule,
@@ -52,7 +56,7 @@ const routes: Routes = [
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule
   ],
-  providers: [MenuStoreService, UploadService],
+  providers: [MenuStoreService, UploadService, ListingsService],
   bootstrap: [AppComponent],
   entryComponents: [AddMenuDialogComponent]
 })

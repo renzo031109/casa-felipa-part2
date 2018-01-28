@@ -1,54 +1,52 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import * as firebase from 'firebase';
-import { Upload } from './models/upload';
+import { Listing } from './models/listing';
 import 'firebase/storage';
+import { GalleryImages } from 'app/menus/models/galleryImages';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UploadService {
-  listings: AngularFireList<any[]>;
-  listing: AngularFireObject<any[]>;
-  folder: any;
+  
+  private basePath = '/uploads';
+  private listing: Observable<GalleryImages[]>;
+  // private gallery: Observable<GalleryImages[]>;
 
-  constructor(private af: AngularFireDatabase) {
-    this.folder = 'listingimages';
-    this.listings = this.af.list('/listings') as AngularFireList<Listing[]>;
-  }
-
-  getListings() {
-    this.listings = this.af.list('/listings') as AngularFireList<Listing[]>;
-    return this.listings;
-  }
-
-  // getListingDetails(id) {
-  //   this.listing = this.af.object('/listings/' + id) as AngularFireObject<Listing>;
-  //   return this.listing;
-  // }
+  constructor(private db: AngularFireDatabase) { }
 
   addListing(listing) {
-    // this.listings = this.af.list('/listings') as AngularFireList<Listing[]>;
-    // Create root ref
     let storageRef = firebase.storage().ref();
-    for(let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]){
-      let path = `/${this.folder}/${selectedFile.name}`;
-      let iRef = storageRef.child(path);
-      iRef.put(selectedFile).then((snapshot) => {
-        listing.image = selectedFile.name;
-        listing.path = path;
-        return this.listings.push(listing);
-        // console.log(listing);
-      });
-    }
+     for(let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]){
+      let path = `/${this.basePath}/${selectedFile.name}`;
+      let uploadTask = storageRef.child(path).put(selectedFile);
+
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      // three observers
+      // 1.) state_changed observer
+      (snapshot) => {
+        // upload in progress
+        // upload.progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
+        // console.log(upload.progress);
+      },
+      // 2.) error observer
+      (error) => {
+        // upload failed
+        console.log(error);
+      },
+      // 3.) success observer
+      (): any => {
+        listing.image = uploadTask.snapshot.downloadURL;
+        // listing.imgName = listing.file.name;
+        this.saveFileData(listing);
+        console.log(listing);
+      }
+    
+    );
   }
-
+  }
+  private saveFileData(listing) {
+    this.db.list(`${this.basePath}/`).push(listing);
+    console.log('File saved!: ' + listing.image);
+  }
 }
-
-interface Listing {
-
-  menuName?: string;
-  description?: string;
-  group?: string;
-  price?: number;
-  image?: any;
-
- }
