@@ -1,26 +1,41 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
-import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
-import { FirebaseApp } from 'angularfire2';
-import 'firebase/storage';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Observable } from 'rxjs/Observable';
 import { GalleryImages } from '../models/galleryImages';
-import * as firebase from 'firebase';
 
 
 @Injectable()
 export class ListingsService {
-  //items: AngularFireList<any[]> = null; //  list of objects
-  items: GalleryImages[];
+  menusCollection: AngularFirestoreCollection<GalleryImages>;
+  menus: Observable<GalleryImages[]>;
+  menuDoc: AngularFirestoreDocument<GalleryImages>;
 
-  constructor(private db: AngularFireDatabase) { 
+  constructor(private afs: AngularFirestore) {
+    this.menusCollection = this.afs.collection('menus', ref => ref.orderBy('name', 'asc'));
 
-    this.items = this.db.list('/uploads').valueChanges();
+    this.menus = this.menusCollection.snapshotChanges().map(changes => {
+      return changes.map( datas => {
+        const data = datas.payload.doc.data() as GalleryImages;
+        data.id = datas.payload.doc.id;
+        return data;
+      });
+    });
   }
 
-  getImages() {
-    this.items =this.db.list('/uploads') as AngularFireList<GalleryImages>
-    return this.items
+  getMenus() {
+    return this.menus;
   }
+
+  addMenu(menu: DataType) {
+    this.menusCollection.add(menu);
+  }
+
+  deleteItem(menu: DataType) {
+    this.menuDoc = this.afs.doc(`menus/${menu}`);
+    this.menuDoc.delete();
+  }
+
+
 
   // getImages(): Observable<GalleryImages[]> {
   //   return this.db.list('uploads').valueChanges();

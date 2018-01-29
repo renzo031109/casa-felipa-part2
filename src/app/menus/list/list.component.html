@@ -6,7 +6,7 @@
   <h2 class="page-title">Menu List Page</h2>
   <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
 
-    <mat-card class="menu-card" *ngFor="let menu of menusList | async">
+    <mat-card class="menu-card" *ngFor="let menu of menuItems | async">
       <!-- <img mat-card-image [src]="menu.image"> -->
       <img mat-card-image src="{{menu.image}}">
       <p>{{menu.menuName}}</p>

@@ -28,18 +28,19 @@ export class MasterDetailComponent implements OnInit {
   //     .subscribe(response => this.menusList = response);
   // }
 
-  menusList: AngularFireList<GalleryImages[]>;
+  ////
+  // menusList: AngularFireList<GalleryImages[]>;
 
-  constructor(private listingService: ListingsService) { }
+  // constructor(private listingService: ListingsService) { }
  
-  ngOnInit() {
-    this.getMenus();
-    console.log(this.menusList);
-  }
+  // ngOnInit() {
+  //   this.getMenus();
+  //   console.log(this.menusList);
+  // }
 
-  getMenus() {
-    this.menusList = this.listingService.getImages();      
-  }
+  // getMenus() {
+  //   this.menusList = this.listingService.getImages();      
+  // }
 
 
 }
