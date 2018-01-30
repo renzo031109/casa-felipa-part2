@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase';
 import { Listing } from './models/listing';
 import 'firebase/storage';
@@ -8,14 +9,29 @@ import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class UploadService {
-  
-  private basePath = '/uploads';
+
+  itemsCollection: AngularFirestoreCollection<Listing>;
+  items: Observable<Listing[]>;
+  itemDoc: AngularFirestoreDocument<Listing>;
+
+  private basePath = 'menus';
   private listing: Observable<GalleryImages[]>;
   // private gallery: Observable<GalleryImages[]>;
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase, private afs: AngularFirestore) {
+    this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
+
+    this.items = this.itemsCollection.snapshotChanges().map(changes => {
+      return changes.map(datas => {
+        const data = datas.payload.doc.data() as Listing;
+        data.id = datas.payload.doc.id;
+        return data;
+      });
+    });
+   }
 
   addListing(listing) {
+
     let storageRef = firebase.storage().ref();
      for(let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]){
       let path = `/${this.basePath}/${selectedFile.name}`;
@@ -41,12 +57,17 @@ export class UploadService {
         this.saveFileData(listing);
         console.log(listing);
       }
-    
     );
   }
   }
   private saveFileData(listing) {
-    this.db.list(`${this.basePath}/`).push(listing);
+    // this.db.list(`${this.basePath}/`).push(listing);
+    this.itemsCollection.add(listing);
     console.log('File saved!: ' + listing.image);
+  }
+
+  getItems() {
+    return this.items;
+    console.log(this.items);
   }
 }

@@ -22,11 +22,11 @@ export class MasterDetailComponent implements OnInit {
   // constructor(private menuStoreService: MenuStoreService) {
   // }
 
-  // ngOnInit() {
-  //   this.menuStoreService
-  //     .getMenus()
-  //     .subscribe(response => this.menusList = response);
-  // }
+  ngOnInit() {
+    // this.menuStoreService
+    //   .getMenus()
+    //   .subscribe(response => this.menusList = response);
+  }
 
   ////
   // menusList: AngularFireList<GalleryImages[]>;

@@ -22,8 +22,6 @@ export class AddMenuDialogComponent implements OnInit,OnChanges {
   group: string;
   price: number;
   image: any;
-  button: boolean = false;
-
 
   constructor(private dialogRef: MatDialogRef<AddMenuDialogComponent>,
     private uploadService: UploadService) { }
@@ -56,7 +54,7 @@ export class AddMenuDialogComponent implements OnInit,OnChanges {
       description: this.description,
       group: this.group,
       price: this.price
-    };    
+    };
     console.log(listing);
     this.uploadService.addListing(listing);
 

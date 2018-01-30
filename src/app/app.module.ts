@@ -24,7 +24,8 @@ import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { UploadService } from 'app/menus/upload.service';
-import { ListingsService } from 'app/menus/service/listings.service';
+
+import { AngularFirestoreModule } from 'angularfire2/firestore';
 
 // import { HttpClientModule } from '@angular/common/http'; 
 
@@ -54,9 +55,10 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
-  providers: [MenuStoreService, UploadService, ListingsService],
+  providers: [MenuStoreService, UploadService],
   bootstrap: [AppComponent],
   entryComponents: [AddMenuDialogComponent]
 })
