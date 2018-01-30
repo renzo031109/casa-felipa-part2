@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase';
-import { Listing } from './models/listing';
+import { Listing } from '../models/listing';
 import 'firebase/storage';
 import { GalleryImages } from 'app/menus/models/galleryImages';
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +16,6 @@ export class UploadService {
 
   private basePath = 'menus';
   private listing: Observable<GalleryImages[]>;
-  // private gallery: Observable<GalleryImages[]>;
 
   constructor(private db: AngularFireDatabase, private afs: AngularFirestore) {
     this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
@@ -31,7 +30,6 @@ export class UploadService {
    }
 
   addListing(listing) {
-
     let storageRef = firebase.storage().ref();
      for(let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]){
       let path = `/${this.basePath}/${selectedFile.name}`;
@@ -68,6 +66,10 @@ export class UploadService {
 
   getItems() {
     return this.items;
-    console.log(this.items);
   }
+
+  deleteItem(item: Listing) {    
+    this.itemDoc = this.afs.doc(`/${this.basePath}/${item}`);
+    this.itemDoc.delete();  }
+
 }

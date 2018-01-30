@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-// import { Menus } from '../menus';
-// import { MenuStoreService } from '../menus-store.service';
+import { Listing } from '../models/listing';
+import { MenuStoreService } from '../menus-store.service';
 
 import { GalleryImages } from '../models/galleryImages';
-import { ListingsService } from '../service/listings.service';
-// import { UploadService } from '../upload.service';
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireList } from 'angularfire2/database/interfaces';
+
+import { UploadService } from '../service/upload.service';
 
 @Component({
   selector: 'app-master-detail',
@@ -16,17 +16,29 @@ import { AngularFireList } from 'angularfire2/database/interfaces';
 })
 export class MasterDetailComponent implements OnInit {
 
+  items: Listing[] = [];
+
+  constructor(private uploadService: UploadService) { }
+
+  ngOnInit() {
+    this.getView();    
+  }
+
+  getView() {
+    this.uploadService.getItems().subscribe(items => this.items = items);
+  }
+
   // menusList: Menus[] = [];
   // selectedMenu: Menus;
 
   // constructor(private menuStoreService: MenuStoreService) {
   // }
 
-  ngOnInit() {
-    // this.menuStoreService
-    //   .getMenus()
-    //   .subscribe(response => this.menusList = response);
-  }
+  // ngOnInit() {
+  //   // this.menuStoreService
+  //   //   .getMenus()
+  //   //   .subscribe(response => this.menusList = response);
+  // }
 
   ////
   // menusList: AngularFireList<GalleryImages[]>;

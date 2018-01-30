@@ -23,7 +23,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
-import { UploadService } from 'app/menus/upload.service';
+import { UploadService } from './menus/service/upload.service';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 

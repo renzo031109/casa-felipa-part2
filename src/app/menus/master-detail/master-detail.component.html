@@ -3,24 +3,24 @@
     <mat-sidenav-container flexLayout-="row" fxFlex class="menus-list">
       <mat-sidenav mode="side" opened>
         <mat-nav-list>
-          <mat-list-item *ngFor="let menu of menusList | async" (click)="selectedMenu = menu">
-            <img mat-list-avatar [src]="menu.coverImage" />
-            <h2 mat-line>{{menu.menuName}}</h2>
-            <p mat-line> {{menu.description}} </p>
+          <mat-list-item *ngFor="let item of items" (click)="selectedMenu = menu">
+            <img mat-list-avatar [src]="item.image" />
+            <h2 mat-line>{{item.menuName}}</h2>
+            <p mat-line> {{item.description}} </p>
           </mat-list-item>
         </mat-nav-list>
       </mat-sidenav>
       <div class="menus-list-item" fxFlex>
         <div *ngIf="selectedMenu" class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
           <div class="menus-list-item--coverimage">
-            <img [src]="selectedMenu.image" />
+            <img [src]="item.image" />
           </div>
           <div class="menus-list-item--content" fxFlex>
-            <h3>{{selectedMenu.menuName}}</h3>
-            <p>{{selectedMenu.description}}</p>
-            <p>{{selectedMenu.group}}</p>
-            <p>ISBN: {{selectedMenu.price}}</p>
-            <p>{{selectedMenu.image}}</p>
+            <h3>{{item.menuName}}</h3>
+            <p>{{item.description}}</p>
+            <p>{{item.group}}</p>
+            <p>{{item.price}}</p>
+            <p>{{item.image}}</p>
           </div>
         </div>
       </div>
