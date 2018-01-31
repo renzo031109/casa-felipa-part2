@@ -1,5 +1,3 @@
-<mat-progress-spinner color="accent" mode="indeterminate" [style.display]="spinnerVisibility" class="spinner">
-</mat-progress-spinner>
 
 <div fxLayout="column" fxFlex *ngIf="items?.length > 0; else noMenu">
   <h2 class="page-title">Menu List Page</h2>
@@ -22,4 +20,6 @@
 <ng-template #noMenu>
   <hr>
   <h5>there was no items to list</h5>
+  <mat-progress-spinner color="accent" mode="indeterminate" [style.display]="spinnerVisibility" class="spinner">
+  </mat-progress-spinner>
 </ng-template>

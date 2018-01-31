@@ -68,7 +68,7 @@ export class UploadService {
     return this.items;
   }
 
-  deleteItem(item: Listing) {    
+  deleteItem(item: Listing) {
     this.itemDoc = this.afs.doc(`/${this.basePath}/${item}`);
     this.itemDoc.delete();  }
 

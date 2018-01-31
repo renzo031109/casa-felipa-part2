@@ -22,7 +22,7 @@ export class ListComponent implements OnInit {
               private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.getView();    
+    this.getView();
   }
 
   getView() {

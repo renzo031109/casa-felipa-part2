@@ -17,11 +17,12 @@ import { UploadService } from '../service/upload.service';
 export class MasterDetailComponent implements OnInit {
 
   items: Listing[] = [];
+  selectedMenu: Listing;
 
   constructor(private uploadService: UploadService) { }
 
   ngOnInit() {
-    this.getView();    
+    this.getView();
   }
 
   getView() {
