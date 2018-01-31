@@ -6,11 +6,11 @@
     <mat-card class="menu-card" *ngFor="let item of items">
       <img mat-card-image src="{{item.image}}">
       <p>{{item.menuName}}</p>
-      <p><strong>Php{{item.price}}</strong></p>
+      <p><strong>Php {{item.price}}</strong></p>
       <mat-card-actions>
         <div style="text-align:center">
-        <button mat-button> DETAIL </button>
-        <button mat-button (click)="deleteMenu($event,item.id)"> DELETE </button>
+        <button mat-button color="accent"> DETAIL </button>
+        <button mat-button color="accent" (click)="deleteMenu($event,item.id)"> DELETE </button>
         </div>
       </mat-card-actions>
     </mat-card>

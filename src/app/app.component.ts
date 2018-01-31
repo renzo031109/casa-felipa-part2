@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
-import { MenuStoreService } from './menus';
 import { AddMenuDialogComponent } from './menus/add-menu-dialog/add-menu-dialog.component';
+import { UploadService } from './menus/service/upload.service';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
@@ -12,6 +12,7 @@ import 'rxjs/add/operator/switchMap';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
   links = [
     { name: 'Menus', path: 'menus' },
     { name: 'Registration', path: 'registration' }
@@ -19,18 +20,19 @@ export class AppComponent {
 
   constructor(private dialog: MatDialog,
               private snackBar: MatSnackBar,
-              private menuStoreService: MenuStoreService){}
+              private uploadService: UploadService
+              ){}
 
       openAddMenuDialog() {
       this.dialog.open(AddMenuDialogComponent)
-        .afterClosed()
-        .filter(menu => !!menu)
-        .switchMap(menu => this.menuStoreService.addMenu(menu))
-        .subscribe(result => {
-          if (result.ok) {
-            this.openSnackBar();
-          }
-        });
+        // .afterClosed()
+        // .filter(menu => !!menu)
+        // .switchMap(menu => this.uploadService.addListing(listing))
+        // .subscribe(result => {
+        //   if (result.ok) {
+        //     this.openSnackBar();
+        //   }
+        // });
     }
 
     openSnackBar() {

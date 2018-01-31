@@ -5,7 +5,6 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
-import { MenuStoreService } from './menus/menus-store.service';
 import { MenusContainerComponent } from './menus/menus-container.component';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,13 +20,11 @@ import { UserRegistrationComponent } from './menus/user-registration/user-regist
 import { RouterModule, Routes } from '@angular/router';
 
 import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment } from '../environments/environment';
 import { UploadService } from './menus/service/upload.service';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 
-// import { HttpClientModule } from '@angular/common/http'; 
 
 
 const routes: Routes = [
@@ -55,10 +52,9 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule,
     AngularFirestoreModule
   ],
-  providers: [MenuStoreService, UploadService],
+  providers: [UploadService],
   bootstrap: [AppComponent],
   entryComponents: [AddMenuDialogComponent]
 })

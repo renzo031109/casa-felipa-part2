@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Listing } from '../models/listing';
-import { MenuStoreService } from '../menus-store.service';
 
 import { GalleryImages } from '../models/galleryImages';
 import { Observable } from 'rxjs/Observable';

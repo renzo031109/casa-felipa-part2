@@ -2,8 +2,8 @@
     <h2 class="page-title">Menu List Master Detail Page</h2>
     <mat-sidenav-container flexLayout-="row" fxFlex class="menus-list">
       <mat-sidenav mode="side" opened>
-        <mat-nav-list>
-          <mat-list-item *ngFor="let item of items" (click)="selectedMenu = item">
+        <mat-nav-list color="accent">
+          <mat-list-item *ngFor="let item of items" (click)="selectedMenu = item" color="accent" >
             <img mat-list-avatar [src]="item.image" />
             <h2 mat-line>{{item.menuName}}</h2>
             <p mat-line> {{item.description}} </p>
@@ -17,9 +17,9 @@
           </div>
           <div class="menus-list-item--content" fxFlex>
             <h3><strong>Name :</strong>{{selectedMenu.menuName}}</h3>
-            <p><strong>Description:</strong>{{selectedMenu.description}}</p>
-            <p><strong>Group:</strong>{{selectedMenu.group}}</p>
-            <p><strong>Price:</strong>{{selectedMenu.price}}</p>
+            <p><strong>Description :</strong>{{selectedMenu.description}}</p>
+            <p><strong>Group :</strong>{{selectedMenu.group}}</p>
+            <p><strong>Price :</strong>{{selectedMenu.price}}</p>
           </div>
         </div>
       </div>
