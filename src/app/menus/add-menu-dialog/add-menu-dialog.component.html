@@ -1,10 +1,13 @@
 <div class="formdialog">
-  <h3>Add Menu</h3>
+  <mat-toolbar>
+    <h3>Add Menu</h3>
+  </mat-toolbar>
+  <br>
 
   <form #form="ngForm" (ngSubmit)="dialogRef.close()" ngNativeValidate>
 
     <div fxLayout="column" fxLayoutGap="10px">
- 
+
       <mat-form-field>
         <input matInput name="menuName" placeholder="Menu Name" [(ngModel)]="menuName" required>
       </mat-form-field>
@@ -24,9 +27,9 @@
 
       <mat-card>
 
-          <label>
-            <input type="file" id="image" name="image" [(ngModel)]="image" required>
-          </label>
+        <label>
+          <input type="file" id="image" name="image" [(ngModel)]="image" required>   
+        </label>
 
       </mat-card>
 
@@ -35,53 +38,7 @@
 
     <mat-dialog-actions align="end">
       <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
-      <button mat-button color="accent"(click)="onSubmit()" [disabled]="!price">Save Book</button>
+      <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!price">Save Book</button>
     </mat-dialog-actions>
 
-</form>
-
-
-
-
-  <!-- <div *ngIf="currentUpload">
-  <div class="progress">
-    <div class="progress-bar progress-bar-animated" [ngStyle]="{ 'width': currentUpload?.progress + '%' }"></div>
-  </div>
-  Progress: {{currentUpload?.name}} | {{currentUpload?.progress}}% Complete
-</div> -->
-
-  <!-- <div *ngIf="currentUpload" class="progress" style="width:400px">
-	<div class="progress-bar progress-bar-info progress-bar-striped"
-		role="progressbar" attr.aria-valuenow="{{progress.percentage}}"
-		aria-valuemin="0" aria-valuemax="100"
-		[ngStyle]="{width:progress.percentage+'%'}">
-		{{progress?.percentage}}%</div>
-  </div>
-
-<mat-card>
-  <mat-card-content>
-    <h2 class="example-h2">Result</h2>
-
-    <section class="example-section">
-      <mat-progress-bar
-          class="example-margin"
-          [color]="accent"
-          [mode]="determinate"
-          [value]= "100"
-          [bufferValue]="100">
-      </mat-progress-bar>
-    </section>
-  </mat-card-content>
-</mat-card>
-
-{{progress?.percentage}}
-
-    <label>
-       <input type="file" (change)="detectFiles($event)">
-    </label>
-    <button
-            [disabled]="!selectedFiles"
-            (click)="uploadSingle()">
-      Upload Single
-    </button>       -->
-</div>
+  </form>

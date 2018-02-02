@@ -1,4 +1,3 @@
-
 <div fxLayout="column" fxFlex *ngIf="items?.length > 0; else noMenu">
   <h2 class="page-title">Menu List Page</h2>
   <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
@@ -6,11 +5,13 @@
     <mat-card class="menu-card" *ngFor="let item of items">
       <img mat-card-image src="{{item.image}}">
       <p>{{item.menuName}}</p>
-      <p><strong>Php {{item.price}}</strong></p>
+      <p>
+        <strong>Php {{item.price}}</strong>
+      </p>
       <mat-card-actions>
         <div style="text-align:center">
-        <button mat-button color="accent"> DETAIL </button>
-        <button mat-button color="accent" (click)="deleteMenu($event,item.id)"> DELETE </button>
+          <button mat-raised-button color="accent"> VIEW </button>
+          <button mat-button color="accent" (click)="deleteMenu($event,item.id)"> DELETE </button>
         </div>
       </mat-card-actions>
     </mat-card>

@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatSnackBar } from '@angular/material';
-import { AddMenuDialogComponent } from './menus/add-menu-dialog/add-menu-dialog.component';
+import { MatDialog } from '@angular/material';
+
 import { UploadService } from './menus/service/upload.service';
+
+import { AddMenuDialogComponent } from './menus/add-menu-dialog/add-menu-dialog.component';
+import { LoginComponent } from './login/login.component';
 
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
@@ -19,26 +22,18 @@ export class AppComponent {
   ];
 
   constructor(private dialog: MatDialog,
-              private snackBar: MatSnackBar,
-              private uploadService: UploadService
-              ){}
+    private uploadService: UploadService
+  ) { }
 
-      openAddMenuDialog() {
-      this.dialog.open(AddMenuDialogComponent)
-        // .afterClosed()
-        // .filter(menu => !!menu)
-        // .switchMap(menu => this.uploadService.addListing(listing))
-        // .subscribe(result => {
-        //   if (result.ok) {
-        //     this.openSnackBar();
-        //   }
-        // });
-    }
+  openAddMenuDialog() {
+    this.dialog.open(AddMenuDialogComponent)
 
-    openSnackBar() {
-      this.snackBar.open('Menu Added', 'CLOSE', {
-        duration: 1000
-      });
-    }
+  }
+
+  openUserLogin() {
+    this.dialog.open(LoginComponent)
+  }
+
+
 
 }

@@ -2,17 +2,23 @@
 
   <mat-toolbar color="accent">
 
-    <span><img src="../assets/casa-felipa-logo.jpg" class="casa-felipa-logo"></span> 
+    <span>
+      <img src="../assets/casa-felipa-logo.jpg" class="casa-felipa-logo">
+    </span>
     <span class="spacer"></span>
 
+ 
     <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>      
-    </button>     
+      <mat-icon>menu</mat-icon>
+    </button>
+    <button mat-mini-fab (click)="openUserLogin()">
+        Login
+      </button>
     <button mat-mini-fab (click)="openAddMenuDialog()">
       <mat-icon>add</mat-icon>
     </button>
   </mat-toolbar>
- 
+
   <mat-sidenav-container fxFlex>
     <mat-sidenav mode="over" #sidenav>
       <mat-nav-list>
@@ -25,4 +31,3 @@
   </mat-sidenav-container>
 
 </div>
-

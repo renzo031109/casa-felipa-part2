@@ -7,6 +7,8 @@ import 'firebase/storage';
 import { GalleryImages } from 'app/menus/models/galleryImages';
 import { Observable } from 'rxjs/Observable';
 
+import { MatSnackBar } from '@angular/material';
+
 @Injectable()
 export class UploadService {
 
@@ -17,7 +19,8 @@ export class UploadService {
   private basePath = 'menus';
   private listing: Observable<GalleryImages[]>;
 
-  constructor(private afs: AngularFirestore) {
+  constructor(private afs: AngularFirestore,
+              private snackBar: MatSnackBar) {
     this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
 
     this.items = this.itemsCollection.snapshotChanges().map(changes => {
@@ -62,6 +65,7 @@ export class UploadService {
     // this.db.list(`${this.basePath}/`).push(listing);
     this.itemsCollection.add(listing);
     console.log('File saved!: ' + listing.image);
+    this.openSnackBarAdd();
   }
 
   getItems() {
@@ -70,6 +74,22 @@ export class UploadService {
 
   deleteItem(item: Listing) {
     this.itemDoc = this.afs.doc(`/${this.basePath}/${item}`);
-    this.itemDoc.delete();  }
+    this.itemDoc.delete();  
+    this.openSnackBarDel()
+  }
+
+  openSnackBarAdd() {
+    this.snackBar.open('Menu added successfully', 'CLOSE', {
+      panelClass: ['snack-bar-color'],
+      duration: 4000
+    });
+  }
+
+  openSnackBarDel() {
+    this.snackBar.open('Menu deleted successfully', 'CLOSE', {
+      panelClass: ['snack-bar-color'],
+      duration: 4000
+    });
+  }
 
 }

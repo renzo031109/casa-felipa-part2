@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
 import { UploadService } from './menus/service/upload.service';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -40,7 +41,8 @@ const routes: Routes = [
     ListComponent,
     AddMenuDialogComponent,
     UserRegistrationComponent,
-    MenusContainerComponent
+    MenusContainerComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +58,7 @@ const routes: Routes = [
   ],
   providers: [UploadService],
   bootstrap: [AppComponent],
-  entryComponents: [AddMenuDialogComponent]
+  entryComponents: [AddMenuDialogComponent,LoginComponent]
 })
 export class AppModule {
 }
