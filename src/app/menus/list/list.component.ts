@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 
 import { GalleryImages } from '../models/galleryImages';
 import { Observable } from 'rxjs/Observable';
@@ -21,13 +21,14 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
+  menuView: string;
 
   items: Listing[];
 
   constructor(private uploadService: UploadService,
-              private snackBar: MatSnackBar,
-              private router: Router,
-              private view: MatDialog) { }
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private view: MatDialog) { }
 
   ngOnInit() {
     this.getView();
@@ -37,18 +38,20 @@ export class ListComponent implements OnInit {
     this.uploadService.getItems().subscribe(items => this.items = items);
   }
 
-  deleteMenu(event, item: Listing){
-    // this.clearState()
+  deleteMenu(event, item: Listing) {
     this.uploadService.deleteItem(item);
   }
 
-  // viewImage() {
-  //   this.router.navigateByUrl('view');
-  // }
 
   openView(event, item: Listing) {
-    this.view.open(ViewComponent);
-    console.log(item);
+
+    let menuView = this.view.open(ViewComponent, {
+      disableClose: true,
+    })
+    menuView.componentInstance.menuImage = item.image;
+    menuView.componentInstance.menuName = item.menuName;
+    menuView.componentInstance.menuPrice = item.price;
+
   }
 
 }

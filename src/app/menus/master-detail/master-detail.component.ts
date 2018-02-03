@@ -26,7 +26,6 @@ export class MasterDetailComponent implements OnInit {
 
   getView() {
     this.uploadService.getItems().subscribe(items => this.items = items);
-    console.log(this.items);
   }
 
   // menusList: Menus[] = [];

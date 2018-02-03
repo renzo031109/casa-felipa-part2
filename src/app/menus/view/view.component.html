@@ -1,18 +1,16 @@
 <div class="formdialog">
-  <mat-toolbar>
-    <h3>Login</h3>
-  </mat-toolbar>
-  <br> 
-    
+  <mat-card-header>
+
+    <mat-card-title><h2>{{menuName}}</h2></mat-card-title>
+    <mat-card-subtitle><h3>PHP {{menuPrice}}</h3></mat-card-subtitle>
+  </mat-card-header>
+
   <mat-card>
-
-    <img src="https://i.kinja-img.com/gawker-media/image/upload/s--_spzCU7F--/c_scale,fl_progressive,q_80,w_800/iar4q55hka6jjpzelpy8.jpg">
-
+    <img src="{{menuImage}}">
   </mat-card>
 
-    <mat-dialog-actions align="end">
-      <button mat-button (click)="viewImage.close()">Cancel</button>
-      <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!price">Login</button>
-    </mat-dialog-actions>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="accent" (click)="viewImage.close()">Back</button>
+  </mat-dialog-actions>
 
 </div>

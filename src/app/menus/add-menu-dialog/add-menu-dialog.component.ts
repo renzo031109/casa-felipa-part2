@@ -33,7 +33,6 @@ export class AddMenuDialogComponent implements OnInit {
       group: this.group,
       price: this.price
     };
-    console.log(listing);
     this.uploadService.addListing(listing);
 
   }

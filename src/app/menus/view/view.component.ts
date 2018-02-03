@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { MatDialogRef, MatFormField } from '@angular/material';
+import { Listing } from '../models/listing';
 
 @Component({
   selector: 'app-view',
@@ -7,10 +8,18 @@ import { MatDialogRef, MatFormField } from '@angular/material';
   styleUrls: ['./view.component.scss']
 })
 export class ViewComponent implements OnInit {
+  menuImage: string ='';
+  menuName: string = '';
+  menuPrice: number = 0;
 
+  
   constructor(private viewImage: MatDialogRef<ViewComponent>) { }
+
 
   ngOnInit() {
   }
 
+  // menuViewImage(menu: string) {
+  //   this.menu = menu;
+  // }
 }
