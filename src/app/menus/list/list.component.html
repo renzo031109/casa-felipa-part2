@@ -3,14 +3,16 @@
   <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
 
     <mat-card class="menu-card" *ngFor="let item of items">
-      <img mat-card-image src="{{item.image}}">
+      <a [routerLink]="['/view']">
+        <img mat-card-image src="{{item.image}}">
+      </a>
       <p>{{item.menuName}}</p>
       <p>
         <strong>Php {{item.price}}</strong>
       </p>
       <mat-card-actions>
         <div style="text-align:center">
-          <button mat-raised-button color="accent"> VIEW </button>
+            <button mat-raised-button color="accent" (click)="openView($event,item.image)">VIEW</button> 
           <button mat-button color="accent" (click)="deleteMenu($event,item.id)"> DELETE </button>
         </div>
       </mat-card-actions>

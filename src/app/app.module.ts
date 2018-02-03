@@ -25,13 +25,14 @@ import { UploadService } from './menus/service/upload.service';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { LoginComponent } from './login/login.component';
-
+import { ViewComponent } from './menus/view/view.component';
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'menus', pathMatch: 'full'},
   {path: 'menus', component: MenusContainerComponent },
-  {path: 'registration', component: UserRegistrationComponent }
+  {path: 'registration', component: UserRegistrationComponent },
+  {path: 'view', component: ViewComponent}
 ];
 
 @NgModule({
@@ -42,7 +43,8 @@ const routes: Routes = [
     AddMenuDialogComponent,
     UserRegistrationComponent,
     MenusContainerComponent,
-    LoginComponent
+    LoginComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +60,7 @@ const routes: Routes = [
   ],
   providers: [UploadService],
   bootstrap: [AppComponent],
-  entryComponents: [AddMenuDialogComponent,LoginComponent]
+  entryComponents: [AddMenuDialogComponent, LoginComponent, ViewComponent]
 })
 export class AppModule {
 }
