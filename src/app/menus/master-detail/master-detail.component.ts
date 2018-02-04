@@ -8,17 +8,22 @@ import { AngularFireList } from 'angularfire2/database/interfaces';
 
 import { UploadService } from '../service/upload.service';
 
+import { ViewComponent } from '../../menus/view/view.component';
+import { MatDialog } from '@angular/material';
+
 @Component({
   selector: 'app-master-detail',
   templateUrl: './master-detail.component.html',
   styleUrls: ['./master-detail.component.scss']
 })
 export class MasterDetailComponent implements OnInit {
+  menuView: string;  
 
   items: Listing[] = [];
   selectedMenu: Listing;
 
-  constructor(private uploadService: UploadService) { }
+  constructor(private uploadService: UploadService,
+              private view: MatDialog) { }
 
   ngOnInit() {
     this.getView();
@@ -28,31 +33,17 @@ export class MasterDetailComponent implements OnInit {
     this.uploadService.getItems().subscribe(items => this.items = items);
   }
 
-  // menusList: Menus[] = [];
-  // selectedMenu: Menus;
+  openView(event, selectedItem: Listing) {
 
-  // constructor(private menuStoreService: MenuStoreService) {
-  // }
+    let menuView = this.view.open(ViewComponent, {
+      disableClose: true,
+    })
 
-  // ngOnInit() {
-  //   // this.menuStoreService
-  //   //   .getMenus()
-  //   //   .subscribe(response => this.menusList = response);
-  // }
+    menuView.componentInstance.menuImage = selectedItem.image;
+    menuView.componentInstance.menuName = selectedItem.menuName;
+    menuView.componentInstance.menuPrice = selectedItem.price;
+    console.log(selectedItem);
 
-  ////
-  // menusList: AngularFireList<GalleryImages[]>;
-
-  // constructor(private listingService: ListingsService) { }
- 
-  // ngOnInit() {
-  //   this.getMenus();
-  //   console.log(this.menusList);
-  // }
-
-  // getMenus() {
-  //   this.menusList = this.listingService.getImages();      
-  // }
-
+  }
 
 }

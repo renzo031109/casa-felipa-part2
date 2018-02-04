@@ -10,10 +10,9 @@ import { Listing } from '../models/listing';
 import { UploadService } from '../service/upload.service';
 
 import { ViewComponent } from '../../menus/view/view.component';
+import { MatDialog } from '@angular/material';
 
 import { Router } from '@angular/router';
-
-import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-list',

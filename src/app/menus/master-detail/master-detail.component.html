@@ -13,14 +13,16 @@
       <div class="menus-list-item" fxFlex>
         <div *ngIf="selectedMenu" class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
           <div class="menus-list-item--coverimage">
-            <img [src]="selectedMenu.image" />
+            <img [src]="selectedMenu.image"/>
           </div>
           <div class="menus-list-item--content" fxFlex>
             <h3><strong>Name :</strong>{{selectedMenu.menuName}}</h3>
             <p><strong>Description :</strong>{{selectedMenu.description}}</p>
             <p><strong>Group :</strong>{{selectedMenu.group}}</p>
             <p><strong>Price :</strong>{{selectedMenu.price}}</p>
+            <button mat-raised-button color="accent" (click)="openView($event,selectedMenu)">View Full Image</button>
           </div>
+
         </div>
       </div>
     </mat-sidenav-container>
