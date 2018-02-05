@@ -43,14 +43,10 @@ export class ListComponent implements OnInit {
 
 
   openView(event, item: Listing) {
-
-    let menuView = this.view.open(ViewComponent, {
-      disableClose: true,
-    })
+    let menuView = this.view.open(ViewComponent);
     menuView.componentInstance.menuImage = item.image;
     menuView.componentInstance.menuName = item.menuName;
     menuView.componentInstance.menuPrice = item.price;
-
   }
 
 }

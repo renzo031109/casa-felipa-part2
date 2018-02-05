@@ -24,6 +24,7 @@ import { environment } from '../environments/environment';
 import { UploadService } from './menus/service/upload.service';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './menus/view/view.component';
 
@@ -56,7 +57,8 @@ const routes: Routes = [
     FormsModule,
     RouterModule.forRoot(routes),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFirestoreModule
+    AngularFirestoreModule,
+    AngularFireAuthModule
   ],
   providers: [UploadService],
   bootstrap: [AppComponent],

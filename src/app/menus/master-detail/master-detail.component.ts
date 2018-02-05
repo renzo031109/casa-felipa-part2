@@ -17,13 +17,13 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./master-detail.component.scss']
 })
 export class MasterDetailComponent implements OnInit {
-  menuView: string;  
+  menuView: string;
 
   items: Listing[] = [];
   selectedMenu: Listing;
 
   constructor(private uploadService: UploadService,
-              private view: MatDialog) { }
+    private view: MatDialog) { }
 
   ngOnInit() {
     this.getView();
@@ -34,16 +34,11 @@ export class MasterDetailComponent implements OnInit {
   }
 
   openView(event, selectedItem: Listing) {
-
-    let menuView = this.view.open(ViewComponent, {
-      disableClose: true,
-    })
-
+    let menuView = this.view.open(ViewComponent);
     menuView.componentInstance.menuImage = selectedItem.image;
     menuView.componentInstance.menuName = selectedItem.menuName;
     menuView.componentInstance.menuPrice = selectedItem.price;
     console.log(selectedItem);
-
   }
 
 }

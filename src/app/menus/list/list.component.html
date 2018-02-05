@@ -13,7 +13,7 @@
       <mat-card-actions>
         <div style="text-align:center">
             <button mat-raised-button color="accent" (click)="openView($event,item)">VIEW</button> 
-          <button mat-button color="accent" (click)="deleteMenu($event,item.id)"> DELETE </button>
+          <button mat-raised-button color="warn" (click)="deleteMenu($event,item.id)"> DELETE </button>
         </div>
       </mat-card-actions>
     </mat-card>
