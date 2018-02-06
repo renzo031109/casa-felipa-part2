@@ -59,7 +59,7 @@ const routes: Routes = [
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [UploadService, AuthenticationService],
+  providers: [UploadService, AuthenticationService, ListComponent],
   bootstrap: [AppComponent],
   entryComponents: [AddMenuDialogComponent, LoginComponent, ViewComponent]
 })

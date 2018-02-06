@@ -19,8 +19,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-  menuView: string;
 
+  hide:boolean;
+  menuView: string;
+  
   items: Listing[];
 
   constructor(private uploadService: UploadService,

@@ -7,16 +7,21 @@
     </span>
     <span class="spacer"></span>
 
- 
+
     <button mat-icon-button (click)="sidenav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <button mat-mini-fab (click)="openUserLogin()">
-        Login
-      </button>
-    <button mat-mini-fab (click)="openAddMenuDialog()">
-      <mat-icon>add</mat-icon>
-    </button>
+
+    <div *ngIf="!(user | async)?.uid">
+      <button mat-mini-fab (click)="openUserLogin()">Login </button>
+    </div>
+
+    <div *ngIf="(user | async)?.uid">
+      <button mat-mini-fab (click)="logOut()">Logout </button>
+      <button mat-mini-fab (click)="openAddMenuDialog()">
+        <mat-icon>add</mat-icon>
+      </button>      
+    </div>
   </mat-toolbar>
 
   <mat-sidenav-container fxFlex>
@@ -33,8 +38,9 @@
 </div>
 
 <footer class='container text-center'>
-    <hr/>
-   <div style="text-align:center; color:#979797"> &copy; Bulalo and Barbeque by Casa Felipa  <br>
-  <strong>renzoft.dev</strong>
+  <hr/>
+  <div style="text-align:center; color:#979797"> &copy; Bulalo and Barbeque by Casa Felipa
+    <br>
+    <strong>renzoft.dev</strong>
   </div>
-    </footer>
+</footer>
