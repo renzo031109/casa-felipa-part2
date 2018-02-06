@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef, MatFormField } from '@angular/material';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { AuthenticationService } from 'app/menus/service/authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,10 +10,21 @@ import { MatFormFieldModule } from '@angular/material/form-field';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
+  email: string;
+  password: string;
+  errorMsg: string;
 
-  constructor(private userLogin: MatDialogRef<LoginComponent>) { }
+  constructor(private userLogin: MatDialogRef<LoginComponent>,
+              private authenticationService: AuthenticationService,
+              private router: Router) { }
 
   ngOnInit() {
+  }
+
+  signIn() {
+    this.authenticationService.login({email: this.email, password: this.password})
+      .then(resolve => this.router.navigate(['menus']))
+      .catch(error => this.errorMsg = error.message);
   }
 
 }

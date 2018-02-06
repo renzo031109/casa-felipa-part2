@@ -6,14 +6,13 @@
   </mat-toolbar>
   <br>
 
-  <form #form="ngForm" (ngSubmit)="userLogin.close()" ngNativeValidate>
+  <form #Loginform="ngForm" (ngSubmit)="userLogin.close()" ngNativeValidate>
 
     <div fxLayout="column" fxLayoutGap="10px">
 
       <mat-form-field>
-        <input matInput name="userName" placeholder="User Name" [(ngModel)]="userName" required>
+        <input matInput name="email" placeholder="Email" [(ngModel)]="email" email required>
       </mat-form-field>
-
 
       <mat-form-field>
         <input matInput name="password" placeholder="Password" type="password" [(ngModel)]="password" required>
@@ -23,7 +22,8 @@
 
     <mat-dialog-actions align="end">
       <button mat-button (click)="userLogin.close()">Cancel</button>
-      <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!price">Login</button>
+      <button mat-raised-button color="accent" (click)="signIn()" [disabled]="!Loginform.form.valid">Login</button>
+      <p *ngIf="msg" color="warn">{{msg}}</p>
     </mat-dialog-actions>
 
   </form>

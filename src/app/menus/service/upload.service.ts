@@ -4,7 +4,6 @@ import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument 
 import * as firebase from 'firebase';
 import { Listing } from '../models/listing';
 import 'firebase/storage';
-import { GalleryImages } from 'app/menus/models/galleryImages';
 import { Observable } from 'rxjs/Observable';
 
 import { MatSnackBar } from '@angular/material';
@@ -17,7 +16,7 @@ export class UploadService {
   itemDoc: AngularFirestoreDocument<Listing>;
 
   private basePath = 'menus';
-  private listing: Observable<GalleryImages[]>;
+  // private listing: Observable<GalleryImages[]>;
 
   constructor(private afs: AngularFirestore,
               private snackBar: MatSnackBar) {
