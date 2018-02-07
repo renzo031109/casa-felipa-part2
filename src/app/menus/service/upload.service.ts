@@ -16,10 +16,10 @@ export class UploadService {
   itemDoc: AngularFirestoreDocument<Listing>;
 
   private basePath = 'menus';
-  // private listing: Observable<GalleryImages[]>;
 
   constructor(private afs: AngularFirestore,
-              private snackBar: MatSnackBar) {
+    private snackBar: MatSnackBar) {
+
     this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
 
     this.items = this.itemsCollection.snapshotChanges().map(changes => {
@@ -29,36 +29,36 @@ export class UploadService {
         return data;
       });
     });
-   }
+  }
 
   addListing(listing) {
     let storageRef = firebase.storage().ref();
-     for(let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]){
+    for (let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]) {
       let path = `/${this.basePath}/${selectedFile.name}`;
       let uploadTask = storageRef.child(path).put(selectedFile);
 
-    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
-      // three observers
-      // 1.) state_changed observer
-      (snapshot) => {
-        // upload in progress
-        // upload.progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
-        // console.log(upload.progress);
-      },
-      // 2.) error observer
-      (error) => {
-        // upload failed
-        console.log(error);
-      },
-      // 3.) success observer
-      (): any => {
-        listing.image = uploadTask.snapshot.downloadURL;
-        // listing.imgName = listing.file.name;
-        this.saveFileData(listing);
-        console.log(listing);
-      }
-    );
-  }
+      uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+        // three observers
+        // 1.) state_changed observer
+        (snapshot) => {
+          // upload in progress
+          // upload.progress = (uploadTask.snapshot.bytesTransferred / uploadTask.snapshot.totalBytes) * 100;
+          // console.log(upload.progress);
+        },
+        // 2.) error observer
+        (error) => {
+          // upload failed
+          console.log(error);
+        },
+        // 3.) success observer
+        (): any => {
+          listing.image = uploadTask.snapshot.downloadURL;
+          // listing.imgName = listing.file.name;
+          this.saveFileData(listing);
+          console.log(listing);
+        }
+      );
+    }
   }
   private saveFileData(listing) {
     // this.db.list(`${this.basePath}/`).push(listing);
@@ -73,7 +73,7 @@ export class UploadService {
 
   deleteItem(item: Listing) {
     this.itemDoc = this.afs.doc(`/${this.basePath}/${item}`);
-    this.itemDoc.delete();  
+    this.itemDoc.delete();
     this.openSnackBarDel()
   }
 

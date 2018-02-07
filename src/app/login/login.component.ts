@@ -11,8 +11,8 @@ import { ListComponent } from '../menus/list/list.component';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  email: string;
-  password: string;
+  email: string = '';
+  password: string = '';
   errorMsg: string;
 
   constructor(private userLogin: MatDialogRef<LoginComponent>,

@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
 export class ListComponent implements OnInit {
 
   user: Observable<firebase.User>;
-  // hide: boolean;
+
   menuView: string;
 
   items: Listing[];
