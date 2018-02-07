@@ -39,12 +39,12 @@ export class AppComponent implements OnInit {
   }
 
   openAddMenuDialog() {
-    this.dialog.open(AddMenuDialogComponent)
+    this.dialog.open(AddMenuDialogComponent);
 
   }
 
   openUserLogin() {
-    this.dialog.open(LoginComponent)
+    this.dialog.open(LoginComponent);
   }
 
   logOut() {

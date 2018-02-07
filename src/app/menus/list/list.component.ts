@@ -6,7 +6,9 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { MatSnackBar } from '@angular/material';
 import { AngularFireList } from 'angularfire2/database/interfaces';
 import { Listing } from '../models/listing';
+
 import { UploadService } from '../service/upload.service';
+import { AuthenticationService } from '../service/authentication.service';
 
 import { ViewComponent } from '../../menus/view/view.component';
 import { MatDialog } from '@angular/material';
@@ -20,18 +22,21 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
-  hide:boolean;
+  user: Observable<firebase.User>;
+  // hide: boolean;
   menuView: string;
-  
+
   items: Listing[];
 
   constructor(private uploadService: UploadService,
-    private snackBar: MatSnackBar,
-    private router: Router,
-    private view: MatDialog) { }
+              private snackBar: MatSnackBar,
+              private router: Router,
+              private view: MatDialog,
+              private authenticationService: AuthenticationService) { }
 
   ngOnInit() {
     this.getView();
+    this.user = this.authenticationService.authUser();
   }
 
   getView() {
