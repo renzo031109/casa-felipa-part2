@@ -19,7 +19,7 @@ export class AddMenuDialogComponent implements OnInit {
   price: number;
   image: any;
 
-  constructor(private dialogRef: MatDialogRef<AddMenuDialogComponent>,
+  constructor(public dialogRef: MatDialogRef<AddMenuDialogComponent>,
     private uploadService: UploadService) { }
 
   ngOnInit() {

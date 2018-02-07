@@ -13,7 +13,7 @@ export class ViewComponent implements OnInit {
   menuPrice: number = 0;
 
   
-  constructor(private viewImage: MatDialogRef<ViewComponent>) { }
+  constructor(public viewImage: MatDialogRef<ViewComponent>) { }
 
 
   ngOnInit() {
