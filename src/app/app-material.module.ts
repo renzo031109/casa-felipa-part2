@@ -16,7 +16,8 @@ import {
   MatCheckboxModule,
   MatSlideToggleModule,
   MatProgressBarModule,
-  MatFormFieldModule,  
+  MatFormFieldModule,
+  MatTooltipModule
 
 } from '@angular/material';
 
@@ -37,7 +38,8 @@ const MATERIAL_MODULES = [
   MatCheckboxModule,
   MatSlideToggleModule,
   MatProgressBarModule,
-  MatFormFieldModule 
+  MatFormFieldModule,
+  MatTooltipModule
 ];
 
 @NgModule({

@@ -7,20 +7,31 @@
     </span>
     <span class="spacer"></span>
 
-
-    <button mat-icon-button (click)="sidenav.toggle()">
-      <mat-icon>menu</mat-icon>
-    </button>
-
-    <div *ngIf="!(user | async)?.uid">
-      <button mat-mini-fab (click)="openUserLogin()">Login </button>
+    <div class="example-tooltip-host" matTooltip="Menu">
+      <button mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
     </div>
 
+    <div *ngIf="!(user | async)?.uid">
+      <div class="example-tooltip-host" matTooltip="Login">
+        <button mat-mini-fab (click)="openUserLogin()">
+          <i class="fas fa-sign-in-alt"></i>
+        </button>
+      </div>
+    </div>
+    
     <div *ngIf="(user | async)?.uid">
-      <button mat-mini-fab (click)="logOut()">Logout </button>
-      <button mat-mini-fab (click)="openAddMenuDialog()">
-        <mat-icon>add</mat-icon>
-      </button>      
+      <div class="example-tooltip-host" matTooltip="Logout">
+        <button mat-mini-fab (click)="logOut()">
+          <i class="fas fa-sign-out-alt"></i>
+        </button>
+      </div>
+      <div class="example-tooltip-host" matTooltip="Add Menu">
+        <button mat-mini-fab (click)="openAddMenuDialog()">
+          <mat-icon>add</mat-icon>
+        </button>
+      </div>
     </div>
   </mat-toolbar>
 
