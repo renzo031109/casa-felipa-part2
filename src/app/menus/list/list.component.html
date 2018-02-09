@@ -1,5 +1,17 @@
 <div fxLayout="column" fxFlex *ngIf="items?.length > 0; else noMenu">
+
   <h2 class="page-title">Menu List Page</h2>
+
+  <mat-form-field style="width:200px">
+      <mat-select placeholder="Category">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let item of items" [value]="item.group">{{item.group}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <br/>
+
+
   <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
 
     <mat-card class="menu-card" *ngFor="let item of items">
@@ -19,6 +31,7 @@
     </mat-card>
   </section>
 </div>
+
 
 <ng-template #noMenu>
   <hr>

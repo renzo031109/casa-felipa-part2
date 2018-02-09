@@ -49,8 +49,7 @@ export class AppComponent implements OnInit {
 
   logOut() {
     this.authenticationService.logout().then(onResolve => this.router.navigate['/']);
-    // let menuView = this.listComponent;
-    // menuView.hide = true; 
+
   }
 
 }

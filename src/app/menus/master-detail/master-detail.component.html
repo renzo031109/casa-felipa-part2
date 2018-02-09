@@ -16,10 +16,10 @@
             <img [src]="selectedMenu.image"/>
           </div>
           <div class="menus-list-item--content" fxFlex>
-            <h3><strong>Name :</strong>{{selectedMenu.menuName}}</h3>
-            <p><strong>Description :</strong>{{selectedMenu.description}}</p>
-            <p><strong>Group :</strong>{{selectedMenu.group}}</p>
-            <p><strong>Price :</strong>{{selectedMenu.price}}</p>
+            <h3><strong>{{selectedMenu.menuName}}</strong></h3>
+            <p>{{selectedMenu.description}}</p>
+            <p>{{selectedMenu.group}}</p>
+            <p>Php {{selectedMenu.price}}</p>
             <button mat-raised-button color="accent" (click)="openView($event,selectedMenu)">View Full Image</button>
           </div>
 
