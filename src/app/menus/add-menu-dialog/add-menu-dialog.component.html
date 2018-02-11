@@ -16,14 +16,30 @@
         <input matInput name="description" placeholder="Description" [(ngModel)]="description" required>
       </mat-form-field>
 
-      <mat-form-field>
+      <!-- <mat-form-field>
         <input matInput name="group" placeholder="Group" [(ngModel)]="group" required>
+      </mat-form-field> -->
+
+      <!-- <mat-form-field>
+        <mat-select [(value)]="group" placeholder="Choose a Category" required>
+          <mat-option value="Appetizer">Appetizer</mat-option>
+          <mat-option value="Drinks">Drinks</mat-option>
+          <mat-option value="Silog">Silog</mat-option>
+          <mat-option value="Soup">Soup</mat-option>  
+        </mat-select>
+      </mat-form-field> -->
+
+      <mat-form-field>
+        <mat-select placeholder="Category" [(ngModel)]="group" name="group" required>
+          <mat-option *ngFor="let category of categories" [value]="category">
+            {{ category }}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
 
       <mat-form-field>
         <input matInput name="price" placeholder="Price" [(ngModel)]="price" required>
       </mat-form-field>
-
 
       <mat-card>
 

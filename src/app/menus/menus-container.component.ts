@@ -4,12 +4,12 @@ import { Component } from '@angular/core';
   selector: 'menus-container',
   template: `
     <mat-tab-group color="accent">
-      <mat-tab label="Master Detail">
+      <mat-tab label="Menu Detailed List">
           <div fxFlex class="master-detail-container">
             <app-master-detail fxFlex></app-master-detail>
           </div>
         </mat-tab>
-      <mat-tab label="List">
+      <mat-tab label="Menus Category">
         <div fxFlex class="menus-list-container">
           <app-list fxFlex></app-list>
         </div>

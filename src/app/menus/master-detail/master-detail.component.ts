@@ -6,6 +6,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireList } from 'angularfire2/database/interfaces';
 
 import { UploadService } from '../service/upload.service';
+import { DataService } from '../service/data.service';
 
 import { ViewComponent } from '../../menus/view/view.component';
 import { MatDialog } from '@angular/material';
@@ -21,7 +22,7 @@ export class MasterDetailComponent implements OnInit {
   items: Listing[] = [];
   selectedMenu: Listing;
 
-  constructor(private uploadService: UploadService,
+  constructor(private dataService: DataService,
     private view: MatDialog) { }
 
   ngOnInit() {
@@ -29,7 +30,7 @@ export class MasterDetailComponent implements OnInit {
   }
 
   getView() {
-    this.uploadService.getItems().subscribe(items => this.items = items);
+    this.dataService.getItems().subscribe(items => this.items = items);
   }
 
   openView(event, selectedItem: Listing) {

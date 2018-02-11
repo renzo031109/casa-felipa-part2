@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, OnChanges } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -9,6 +9,7 @@ import { Listing } from '../models/listing';
 
 import { UploadService } from '../service/upload.service';
 import { AuthenticationService } from '../service/authentication.service';
+import { DataService } from '../service/data.service';
 
 import { ViewComponent } from '../../menus/view/view.component';
 import { MatDialog } from '@angular/material';
@@ -20,7 +21,7 @@ import { Router } from '@angular/router';
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.scss']
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnChanges {
 
   user: Observable<firebase.User>;
 
@@ -28,7 +29,15 @@ export class ListComponent implements OnInit {
 
   items: Listing[];
 
-  constructor(private uploadService: UploadService,
+  private categories = [
+    'All',
+    'Appetizer',
+    'Drinks',
+    'Silog',
+    'Soup'
+];
+
+  constructor(private dataService: DataService,
               private snackBar: MatSnackBar,
               private router: Router,
               private view: MatDialog,
@@ -39,14 +48,18 @@ export class ListComponent implements OnInit {
     this.user = this.authenticationService.authUser();
   }
 
+  ngOnChanges() {
+    this.getView();
+    this.user = this.authenticationService.authUser();
+  }
+
   getView() {
-    this.uploadService.getItems().subscribe(items => this.items = items);
+    this.dataService.getItems().subscribe(items => this.items = items);
   }
 
   deleteMenu(event, item: Listing) {
-    this.uploadService.deleteItem(item);
+    this.dataService.deleteItem(item);
   }
-
 
   openView(event, item: Listing) {
     let menuView = this.view.open(ViewComponent);

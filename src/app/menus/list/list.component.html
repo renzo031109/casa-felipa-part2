@@ -2,22 +2,18 @@
 
   <h2 class="page-title">Menu List Page</h2>
 
-  <mat-form-field style="width:200px">
-      <mat-select placeholder="Category">
-        <mat-option>None</mat-option>
-        <mat-option *ngFor="let item of items" [value]="item.group">{{item.group}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-
-    <br/>
-
+  <mat-form-field>
+    <mat-select placeholder="Category" [(ngModel)]="group" name="group">
+      <mat-option *ngFor="let category of categories" [value]="category">
+        {{ category }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br/>
 
   <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
-
-    <mat-card class="menu-card" *ngFor="let item of items">
-
+    <mat-card class="menu-card" *ngFor="let item of  items ">
       <img mat-card-image src="{{item.image}}">
-
       <p>{{item.menuName}}</p>
       <p>
         <strong>Php {{item.price}}</strong>
@@ -30,12 +26,12 @@
       </mat-card-actions>
     </mat-card>
   </section>
-</div>
 
+</div>
 
 <ng-template #noMenu>
   <hr>
-  <h5>there was no items to list</h5>
+  <h3>there was no items to list</h3>
   <mat-progress-spinner color="accent" mode="indeterminate" [style.display]="spinnerVisibility" class="spinner">
   </mat-progress-spinner>
 </ng-template>

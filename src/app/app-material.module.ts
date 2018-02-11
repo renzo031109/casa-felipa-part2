@@ -17,7 +17,7 @@ import {
   MatSlideToggleModule,
   MatProgressBarModule,
   MatFormFieldModule,
-  MatTooltipModule
+  MatTooltipModule  
 
 } from '@angular/material';
 

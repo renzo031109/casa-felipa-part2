@@ -21,11 +21,13 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { UploadService } from './menus/service/upload.service';
 import { AuthenticationService } from './menus/service/authentication.service';
+import { DataService } from './menus/service/data.service';
 
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
+import { FilterPipe } from './menus/pipe/filter.pipe';
 
 
 
@@ -45,7 +47,8 @@ const routes: Routes = [
     UserRegistrationComponent,
     MenusContainerComponent,
     LoginComponent,
-    ViewComponent
+    ViewComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,7 @@ const routes: Routes = [
     AngularFirestoreModule,
     AngularFireAuthModule
   ],
-  providers: [UploadService, AuthenticationService, ListComponent],
+  providers: [UploadService, AuthenticationService, DataService],
   bootstrap: [AppComponent],
   entryComponents: [AddMenuDialogComponent, LoginComponent, ViewComponent]
 })

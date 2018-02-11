@@ -31,8 +31,7 @@ export class AppComponent implements OnInit {
   constructor(private dialog: MatDialog,
               private uploadService: UploadService,
               private authenticationService: AuthenticationService,
-              private router: Router,
-              private listComponent: ListComponent ) { }
+              private router: Router) { }
 
   ngOnInit() {
     this.user = this.authenticationService.authUser();
