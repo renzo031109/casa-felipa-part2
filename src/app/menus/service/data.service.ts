@@ -16,7 +16,7 @@ export class DataService {
 
   private basePath = 'menus';
 
-  constructor(private afs: AngularFirestore,
+  constructor(private afs: AngularFirestore,    
     private snackBar: MatSnackBar) {
 
       this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));

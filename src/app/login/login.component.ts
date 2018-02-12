@@ -17,22 +17,17 @@ export class LoginComponent implements OnInit {
 
   constructor(public userLogin: MatDialogRef<LoginComponent>,
               private authenticationService: AuthenticationService,
-              private router: Router,
-              private listComponent: ListComponent) { }
+              private router: Router) { }
 
   ngOnInit() {
   }
 
   signIn(Loginform) {
-      
     this.authenticationService.login({email: this.email, password: this.password})
       .then( (success) => {
         this.router.navigate(['menus']);
-        // let menuView = this.listComponent;
-        // menuView.hide = false;        
       })
       .catch(error => this.errorMsg = error.message);
-     
   }
 
 }
