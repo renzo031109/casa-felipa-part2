@@ -2,17 +2,22 @@
 
   <h2 class="page-title">Menu List Page</h2>
 
+  <!-- ************** -->
+
   <mat-form-field>
-    <mat-select placeholder="Category" [(ngModel)]="group" name="group">
+    <mat-select placeholder="Category" [(ngModel)]="selectedCategory" (ngModelChange)="categoryChange($event)">
       <mat-option *ngFor="let category of categories" [value]="category">
         {{ category }}
       </mat-option>
     </mat-select>
   </mat-form-field>
+    <p>I selected {{selectedCategory}}</p>
   <br/>
 
+  <!-- *********** -->
+
   <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
-    <mat-card class="menu-card" *ngFor="let item of  items ">
+    <mat-card class="menu-card" *ngFor="let item of items ">
       <img mat-card-image src="{{item.image}}">
       <p>{{item.menuName}}</p>
       <p>
