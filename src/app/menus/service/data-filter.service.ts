@@ -8,18 +8,26 @@ import { Observable } from 'rxjs/Observable';
 import { MatSnackBar } from '@angular/material';
 
 @Injectable()
-export class DataService {
+export class DataFilterService {
 
   itemsCollection: AngularFirestoreCollection<Listing>;
   items: Observable<Listing[]>;
   itemDoc: AngularFirestoreDocument<Listing>;
 
   private basePath = 'menus';
+  private category: string = 'All';
 
   constructor(private afs: AngularFirestore,
     private snackBar: MatSnackBar) {
 
+      if (this.category === 'All') {
+
       this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
+
+      } else {
+
+        this.itemsCollection = this.afs.collection('menus', ref => ref.where('group', '==', `${this.category}`));
+      }
 
       this.items = this.itemsCollection.snapshotChanges().map(changes => {
         return changes.map(datas => {
@@ -28,6 +36,11 @@ export class DataService {
           return data;
         });
       });
+      console.log(this.category);
+  }
+
+  categoryChange(selectedCategory) {
+    this.category = selectedCategory;
   }
 
   getItems() {

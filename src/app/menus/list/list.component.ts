@@ -10,6 +10,7 @@ import { Listing } from '../models/listing';
 import { UploadService } from '../service/upload.service';
 import { AuthenticationService } from '../service/authentication.service';
 import { DataService } from '../service/data.service';
+import { DataFilterService } from '../service/data-filter.service';
 
 import { ViewComponent } from '../../menus/view/view.component';
 import { MatDialog } from '@angular/material';
@@ -38,14 +39,17 @@ export class ListComponent implements OnInit {
 ];
 
   constructor(private dataService: DataService,
+              private dataFilterService: DataFilterService,
               private snackBar: MatSnackBar,
               private router: Router,
               private view: MatDialog,
               private authenticationService: AuthenticationService) { }
 
-//Select filter data in data service              
-  categoryChange(selectedCategory) {
-    console.log(selectedCategory);    
+// Select filter data in data service
+    categoryChange(selectedCategory) {
+
+    this.dataFilterService.categoryChange(selectedCategory);
+
   }
 
   ngOnInit() {
@@ -59,7 +63,7 @@ export class ListComponent implements OnInit {
   // }
 
   getView() {
-    this.dataService.getItems().subscribe(items => this.items = items);
+    this.dataFilterService.getItems().subscribe(items => this.items = items);
   }
 
   deleteMenu(event, item: Listing) {
