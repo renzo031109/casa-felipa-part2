@@ -30,13 +30,14 @@ export class ListComponent implements OnInit {
 
   items: Listing[];
 
-  private categories = [
+  categories = [
     'All',
     'Appetizer',
     'Drinks',
     'Silog',
     'Soup'
 ];
+
 
   constructor(private dataService: DataService,
               private dataFilterService: DataFilterService,

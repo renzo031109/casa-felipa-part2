@@ -1,4 +1,4 @@
-<div fxLayout="column" fxFlex *ngIf="items?.length > 0; else noMenu">
+<div fxLayout="column" fxFlex>
 
   <h2 class="page-title">Menu List Page</h2>
 
@@ -14,7 +14,10 @@
     <p>I selected {{selectedCategory}}</p>
   <br/>
 
+
   <!-- *********** -->
+
+ <div  *ngIf="items?.length > 0; else noMenu">
 
   <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
     <mat-card class="menu-card" *ngFor="let item of items ">
@@ -31,6 +34,8 @@
       </mat-card-actions>
     </mat-card>
   </section>
+
+</div> 
 
 </div>
 

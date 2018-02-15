@@ -1,9 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import * as firebase from 'firebase';
 import { Listing } from '../models/listing';
 import 'firebase/storage';
 import { Observable } from 'rxjs/Observable';
+
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/observable/combineLatest';
 
 import { MatSnackBar } from '@angular/material';
 
@@ -15,32 +19,49 @@ export class DataFilterService {
   itemDoc: AngularFirestoreDocument<Listing>;
 
   private basePath = 'menus';
-  private category: string = 'All';
+  selectedGroup: BehaviorSubject<string | null>;
 
   constructor(private afs: AngularFirestore,
     private snackBar: MatSnackBar) {
 
-      if (this.category === 'All') {
+    this.selectedGroup = new BehaviorSubject(null);
 
-      this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
+    this.items = Observable.combineLatest(
+      this.selectedGroup
+    ).switchMap(([selected]) =>
+      afs.collection('menus', ref => {
+        let query: firebase.firestore.Query = ref;
+        //when user select category aside from all
+        if (selected !== 'All') { query = query.where('group', '==', selected) }
+        //when user select all
+        else { query.orderBy('menuName', 'asc'); }
+        return query;
+      }).valueChanges()
+    );
 
-      } else {
+    // if (this.category === 'All') {
 
-        this.itemsCollection = this.afs.collection('menus', ref => ref.where('group', '==', `${this.category}`));
-      }
+    // this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
 
-      this.items = this.itemsCollection.snapshotChanges().map(changes => {
-        return changes.map(datas => {
-          const data = datas.payload.doc.data() as Listing;
-          data.id = datas.payload.doc.id;
-          return data;
-        });
-      });
-      console.log(this.category);
+    // } else {
+
+    //   this.itemsCollection = this.afs.collection('menus', ref => ref.where('group', '==', `${this.category}`));
+    // }
+
+    // this.items = this.itemsCollection.snapshotChanges().map(changes => {
+    //   return changes.map(datas => {
+    //     const data = datas.payload.doc.data() as Listing;
+    //     data.id = datas.payload.doc.id;
+    //     return data;
+    //   });
+    // });
+    // console.log(this.category);
+
   }
 
-  categoryChange(selectedCategory) {
-    this.category = selectedCategory;
+
+  categoryChange(selected: string | null) {
+    this.selectedGroup.next(selected);
   }
 
   getItems() {
