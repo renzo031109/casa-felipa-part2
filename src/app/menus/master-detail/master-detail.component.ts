@@ -20,8 +20,8 @@ export class MasterDetailComponent implements OnInit {
   menuView: string;
 
   items: Listing[] = [];
-  selectedMenu: Listing;
-
+  selectedMenu: Listing;  
+ 
   constructor(private dataService: DataService,
     private view: MatDialog) { }
 

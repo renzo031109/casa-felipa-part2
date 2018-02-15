@@ -38,6 +38,7 @@ export class ListComponent implements OnInit {
     'Soup'
 ];
 
+selectedCategory: string = this.categories[0];
 
   constructor(private dataService: DataService,
               private dataFilterService: DataFilterService,
@@ -53,7 +54,7 @@ export class ListComponent implements OnInit {
 
   }
 
-  ngOnInit() {
+  ngOnInit() {  
     this.getView();
     this.user = this.authenticationService.authUser();
   }

@@ -11,7 +11,8 @@
         </mat-nav-list>
       </mat-sidenav>
       <div class="menus-list-item" fxFlex>
-        <div *ngIf="selectedMenu" class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
+
+        <div *ngIf="selectedMenu; else noSelect" class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
           <div class="menus-list-item--coverimage">
             <img [src]="selectedMenu.image"/>
           </div>
@@ -22,8 +23,23 @@
             <p>Php {{selectedMenu.price}}</p>
             <button mat-raised-button color="accent" (click)="openView($event,selectedMenu)">View Full Image</button>
           </div>
-
-        </div>
+        </div>   
+        
+        <ng-template #noSelect>
+            <div *ngFor="let display of items | slice:0:1; " class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
+                <div class="menus-list-item--coverimage">
+                  <img [src]="display.image"/>
+                </div>
+                <div class="menus-list-item--content" fxFlex>
+                  <h3><strong>{{display.menuName}}</strong></h3>
+                  <p>{{display.description}}</p>
+                  <p>{{display.group}}</p>
+                  <p>Php {{display.price}}</p>
+                  <button mat-raised-button color="accent" (click)="openView($event,selectedMenu)">View Full Image</button>
+                </div>
+              </div>       
+        </ng-template>  
+        
       </div>
     </mat-sidenav-container>
   </div>

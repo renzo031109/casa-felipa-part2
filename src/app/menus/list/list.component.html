@@ -5,13 +5,15 @@
   <!-- ************** -->
 
   <mat-form-field>
-    <mat-select placeholder="Category" [(ngModel)]="selectedCategory" (ngModelChange)="categoryChange($event)">
+      <label> Filter by : </label>
+
+    <mat-select placeholder="Category" [(ngModel)]="selectedCategory" (ngModelChange)="categoryChange($event)" class="filter-category">
       <mat-option *ngFor="let category of categories" [value]="category">
         {{ category }}
       </mat-option>
     </mat-select>
   </mat-form-field>
-    <p>I selected {{selectedCategory}}</p>
+
   <br/>
 
 

@@ -24,7 +24,7 @@ export class DataFilterService {
   constructor(private afs: AngularFirestore,
     private snackBar: MatSnackBar) {
 
-    this.selectedGroup = new BehaviorSubject(null);
+    this.selectedGroup = new BehaviorSubject('All');
 
     this.items = Observable.combineLatest(
       this.selectedGroup

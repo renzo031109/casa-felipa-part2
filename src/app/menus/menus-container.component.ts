@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
             <app-master-detail fxFlex></app-master-detail>
           </div>
         </mat-tab>
-      <mat-tab label="Menus Category">
+      <mat-tab label="Menu Gallery">
         <div fxFlex class="menus-list-container">
           <app-list fxFlex></app-list>
         </div>
