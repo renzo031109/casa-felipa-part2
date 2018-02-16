@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from './service/authentication.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'menus-container',
@@ -14,6 +16,11 @@ import { Component } from '@angular/core';
           <app-list fxFlex></app-list>
         </div>
       </mat-tab>
+      <mat-tab *ngIf="(user | async)?.uid" label="Master File">
+      <div fxFlex class="menus-list-container">
+        <app-master-file-list fxFlex></app-master-file-list>
+      </div>
+    </mat-tab>
     </mat-tab-group>
   `,
   styles: [`
@@ -31,4 +38,15 @@ import { Component } from '@angular/core';
     }
   `]
 })
-export class MenusContainerComponent {}
+export class MenusContainerComponent implements OnInit {
+
+  user: Observable<firebase.User>;
+
+  constructor(private authenticationService: AuthenticationService) { }
+
+  ngOnInit() {  
+    this.user = this.authenticationService.authUser();
+  }
+
+  
+}

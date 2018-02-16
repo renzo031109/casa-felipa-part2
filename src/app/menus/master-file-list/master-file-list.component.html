@@ -1,39 +1,23 @@
 <div fxLayout="column" fxFlex>
 
-  <h2 class="page-title">Menu List Page</h2>
+  <h2 class="page-title">Master File</h2>
 
-  <!-- ************** -->
-
-  <mat-form-field>
-      <label> Filter by : </label>
-
-    <mat-select placeholder="Category" [(ngModel)]="selectedCategory" (ngModelChange)="categoryChange($event)" class="filter-category">
-      <mat-option *ngFor="let category of categories" [value]="category">
-        {{ category }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-
-  <br/>
-
-
-  <!-- *********** -->
 
  <div  *ngIf="items?.length > 0; else noMenu">
 
   <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
     <mat-card class="menu-card" *ngFor="let item of items ">
-      <img mat-card-image src="{{item.image}}" (click)="openView($event,item)" class="imageMenu">
+      <img mat-card-image src="{{item.image}}">
       <p>{{item.menuName}}</p>
       <p>
         <strong>Php {{item.price}}</strong>
       </p>
-      <!-- <mat-card-actions>
+      <mat-card-actions>
         <div style="text-align:center">
           <button mat-raised-button color="accent" (click)="openView($event,item)">VIEW</button>
           <button *ngIf="(user | async)?.uid" mat-raised-button color="warn" (click)="deleteMenu($event,item.id)"> DELETE </button>
         </div>
-      </mat-card-actions> -->
+      </mat-card-actions>
     </mat-card>
   </section>
 

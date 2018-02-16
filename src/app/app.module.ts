@@ -29,6 +29,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { FilterPipe } from './menus/pipe/filter.pipe';
+import { MasterFileListComponent } from './menus/master-file-list/master-file-list.component';
 
 
 
@@ -49,7 +50,8 @@ const routes: Routes = [
     MenusContainerComponent,
     LoginComponent,
     ViewComponent,
-    FilterPipe
+    FilterPipe,
+    MasterFileListComponent
   ],
   imports: [
     BrowserModule,
