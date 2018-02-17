@@ -36,47 +36,52 @@ export class ListComponent implements OnInit {
     'Drinks',
     'Silog',
     'Soup'
-];
+  ];
 
-selectedCategory: string = this.categories[0];
+  prices = [
+    'Low to High',
+    'High to Low'
+  ];
+
+  selectedCategory: string = this.categories[0];
 
   constructor(private dataService: DataService,
-              private dataFilterService: DataFilterService,
-              private snackBar: MatSnackBar,
-              private router: Router,
-              private view: MatDialog,
-              private authenticationService: AuthenticationService) { }
+    private dataFilterService: DataFilterService,
+    private snackBar: MatSnackBar,
+    private router: Router,
+    private view: MatDialog,
+    private authenticationService: AuthenticationService) { }
 
-// Select filter data in data service
-    categoryChange(selectedCategory) {
 
-    this.dataFilterService.categoryChange(selectedCategory);
 
-  }
-
-  ngOnInit() {  
+  ngOnInit() {
     this.getView();
     this.user = this.authenticationService.authUser();
   }
 
-  // ngOnChanges() {
-  //   this.getView();
-  //   this.user = this.authenticationService.authUser();
-  // }
+    // Select filter data in data service
+    categoryChange(selectedCategory) {
+      this.dataFilterService.categoryChange(selectedCategory);
+    }
+
+    sortedPriceEvent(sortedPrice) {
+      this.dataFilterService.sortedPriceEvent(sortedPrice);
+    }    
+
 
   getView() {
     this.dataFilterService.getItems().subscribe(items => this.items = items);
   }
 
-  deleteMenu(event, item: Listing) {
-    this.dataService.deleteItem(item);
-  }
+  // deleteMenu(event, item: Listing) {
+  //   this.dataService.deleteItem(item);
+  // }
 
-  openView(event, item: Listing) {
-    let menuView = this.view.open(ViewComponent);
-    menuView.componentInstance.menuImage = item.image;
-    menuView.componentInstance.menuName = item.menuName;
-    menuView.componentInstance.menuPrice = item.price;
-  }
+  // openView(event, item: Listing) {
+  //   let menuView = this.view.open(ViewComponent);
+  //   menuView.componentInstance.menuImage = item.image;
+  //   menuView.componentInstance.menuName = item.menuName;
+  //   menuView.componentInstance.menuPrice = item.price;
+  // }
 
 }

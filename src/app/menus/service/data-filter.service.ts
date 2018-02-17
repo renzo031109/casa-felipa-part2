@@ -20,11 +20,15 @@ export class DataFilterService {
 
   private basePath = 'menus';
   selectedGroup: BehaviorSubject<string | null>;
+  sortedPricing: BehaviorSubject<string | null>;
+
+  $sortPrice:string;
 
   constructor(private afs: AngularFirestore,
     private snackBar: MatSnackBar) {
 
     this.selectedGroup = new BehaviorSubject('All');
+    this.sortedPricing = new BehaviorSubject('asc');
 
     this.items = Observable.combineLatest(
       this.selectedGroup
@@ -32,36 +36,30 @@ export class DataFilterService {
       afs.collection('menus', ref => {
         let query: firebase.firestore.Query = ref;
         //when user select category aside from all
-        if (selected !== 'All') { query = query.where('group', '==', selected) }
+        if (selected !== 'All') { query = query.where('group', '==', selected)}
         //when user select all
         else { query.orderBy('menuName', 'asc'); }
         return query;
       }).valueChanges()
     );
 
-    // if (this.category === 'All') {
-
-    // this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
-
-    // } else {
-
-    //   this.itemsCollection = this.afs.collection('menus', ref => ref.where('group', '==', `${this.category}`));
-    // }
-
-    // this.items = this.itemsCollection.snapshotChanges().map(changes => {
-    //   return changes.map(datas => {
-    //     const data = datas.payload.doc.data() as Listing;
-    //     data.id = datas.payload.doc.id;
-    //     return data;
-    //   });
-    // });
-    // console.log(this.category);
-
   }
 
-
+  // filter on category
   categoryChange(selected: string | null) {
     this.selectedGroup.next(selected);
+  }
+
+  // sort price high and low
+  sortedPriceEvent(sortedPrice: string | null) {
+    
+    if(sortedPrice === 'Low to High') {
+        this.$sortPrice = 'asc';
+    } else {
+        this.$sortPrice = 'dsc'
+    }
+    this.sortedPricing.next(this.$sortPrice);
+    console.log(this.$sortPrice);
   }
 
   getItems() {
