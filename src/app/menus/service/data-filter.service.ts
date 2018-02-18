@@ -57,9 +57,7 @@ export class DataFilterService {
 
   // sort price high and low
   sortedPriceEvent(sortedPrice: string | null) {
-
     this.sortedPricing.next(sortedPrice);
-    console.log(sortedPrice);
   }
 
   getItems() {

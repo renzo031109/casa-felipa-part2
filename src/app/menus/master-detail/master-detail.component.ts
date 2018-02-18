@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { Listing } from '../models/listing';
 
 import { Observable } from 'rxjs/Observable';
@@ -23,9 +23,14 @@ export class MasterDetailComponent implements OnInit {
   selectedMenu: Listing;  
  
   constructor(private dataService: DataService,
-    private view: MatDialog) { }
+    private view: MatDialog) {
+      this.getView();
+     }
 
-  ngOnInit() {
+  ngOnInit() {    
+  }
+
+  ngOnChanges() {
     this.getView();
   }
 

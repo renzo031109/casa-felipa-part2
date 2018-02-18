@@ -13,7 +13,7 @@ import { MenusContainerComponent } from './menus/menus-container.component';
 import { MasterDetailComponent } from './menus/master-detail/master-detail.component';
 import { ListComponent } from './menus/list/list.component';
 import { AddMenuDialogComponent } from './menus/add-menu-dialog/add-menu-dialog.component';
-import { UserRegistrationComponent } from './menus/user-registration/user-registration.component';
+import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './menus/view/view.component';
 
@@ -30,13 +30,15 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { FilterPipe } from './menus/pipe/filter.pipe';
 import { MasterFileListComponent } from './menus/master-file-list/master-file-list.component';
+import { AboutComponent } from './about/about.component';
 
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'menus', pathMatch: 'full'},
   {path: 'menus', component: MenusContainerComponent },
-  {path: 'registration', component: UserRegistrationComponent }
+  {path: 'registration', component: UserRegistrationComponent },
+  {path: 'about', component: AboutComponent }
 
 ];
 
@@ -51,7 +53,8 @@ const routes: Routes = [
     LoginComponent,
     ViewComponent,
     FilterPipe,
-    MasterFileListComponent
+    MasterFileListComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,

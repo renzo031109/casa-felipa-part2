@@ -1,4 +1,4 @@
-import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Component, OnInit, OnChanges} from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -23,7 +23,7 @@ import { Router } from '@angular/router';
   templateUrl: './master-file-list.component.html',
   styleUrls: ['./master-file-list.component.scss']
 })
-export class MasterFileListComponent implements OnInit {
+export class MasterFileListComponent implements OnInit{
 
 
   user: Observable<firebase.User>;
@@ -57,14 +57,9 @@ selectedCategory: string = this.categories[0];
   }
 
   ngOnInit() {  
-    this.getView();
     this.user = this.authenticationService.authUser();
+    this.getView();
   }
-
-  // ngOnChanges() {
-  //   this.getView();
-  //   this.user = this.authenticationService.authUser();
-  // }
 
   getView() {
     this.dataService.getItems().subscribe(items => this.items = items);

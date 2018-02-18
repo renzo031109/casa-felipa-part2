@@ -24,8 +24,9 @@ export class AppComponent implements OnInit {
   user: Observable<firebase.User>;
 
   links = [
-    { name: 'Menus', path: 'menus' },
-    { name: 'Registration', path: 'registration' }
+    { name: 'Our Menu', path: 'menus' },
+    { name: 'Contact Us', path: 'registration' },
+    { name: 'About Us', path: 'about'}
   ];
 
   constructor(private dialog: MatDialog,

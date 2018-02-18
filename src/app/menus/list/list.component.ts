@@ -44,6 +44,8 @@ export class ListComponent implements OnInit {
     'High to Low'
   ];
 
+  text = "&nbsp;&nbsp";
+
   selectedCategory: string = this.categories[0];
 
   constructor(private dataService: DataService,

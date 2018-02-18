@@ -18,15 +18,12 @@
     <mat-radio-group class="example-radio-group" [(ngModel)]="sortedPrice" (ngModelChange)="sortedPriceEvent($event)">
       Sort Price by :
       <mat-radio-button class="example-radio-button" *ngFor="let price of prices" [value]="price">
-        {{price}}
+        {{price}} <span [innerHTML]="text"></span>
       </mat-radio-button>
     </mat-radio-group>
-    <!-- <div class="example-selected-value">Your favorite season is: {{SortedPrice}}</div> -->
   </div>
 
   </mat-form-field>
-
-
 
   <br/>
 
@@ -42,12 +39,6 @@
         <p>
           <strong>Php {{item.price}}</strong>
         </p>
-        <!-- <mat-card-actions>
-        <div style="text-align:center">
-          <button mat-raised-button color="accent" (click)="openView($event,item)">VIEW</button>
-          <button *ngIf="(user | async)?.uid" mat-raised-button color="warn" (click)="deleteMenu($event,item.id)"> DELETE </button>
-        </div>
-      </mat-card-actions> -->
       </mat-card>
     </section>
 
