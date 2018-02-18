@@ -25,14 +25,15 @@ import { Router } from '@angular/router';
 export class ListComponent implements OnInit {
 
   user: Observable<firebase.User>;
-
   menuView: string;
-
   items: Listing[];
+  $sortPrice:string;
 
   categories = [
     'All',
     'Appetizer',
+    'Barbeque',
+    'Dessert',
     'Drinks',
     'Silog',
     'Soup'
@@ -65,7 +66,12 @@ export class ListComponent implements OnInit {
     }
 
     sortedPriceEvent(sortedPrice) {
-      this.dataFilterService.sortedPriceEvent(sortedPrice);
+      if(sortedPrice === 'Low to High') {
+        this.$sortPrice = 'asc';
+    } else {
+        this.$sortPrice = 'dsc'
+    }
+      this.dataFilterService.sortedPriceEvent(this.$sortPrice);
     }    
 
 
@@ -73,15 +79,15 @@ export class ListComponent implements OnInit {
     this.dataFilterService.getItems().subscribe(items => this.items = items);
   }
 
-  // deleteMenu(event, item: Listing) {
-  //   this.dataService.deleteItem(item);
-  // }
+  deleteMenu(event, item: Listing) {
+    this.dataService.deleteItem(item);
+  }
 
-  // openView(event, item: Listing) {
-  //   let menuView = this.view.open(ViewComponent);
-  //   menuView.componentInstance.menuImage = item.image;
-  //   menuView.componentInstance.menuName = item.menuName;
-  //   menuView.componentInstance.menuPrice = item.price;
-  // }
+  openView(event, item: Listing) {
+    let menuView = this.view.open(ViewComponent);
+    menuView.componentInstance.menuImage = item.image;
+    menuView.componentInstance.menuName = item.menuName;
+    menuView.componentInstance.menuPrice = item.price;
+  }
 
 }

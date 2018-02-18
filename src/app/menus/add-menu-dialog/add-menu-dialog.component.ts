@@ -15,6 +15,8 @@ export class AddMenuDialogComponent implements OnInit {
 
 private categories = [
     'Appetizer',
+    'Barbeque',
+    'Dessert',
     'Drinks',
     'Silog',
     'Soup'
@@ -41,7 +43,5 @@ private categories = [
       price: this.price
     };
     this.uploadService.addListing(listing);
-
   }
-
 }

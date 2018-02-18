@@ -22,8 +22,6 @@ export class DataFilterService {
   selectedGroup: BehaviorSubject<string | null>;
   sortedPricing: BehaviorSubject<string | null>;
 
-  $sortPrice:string;
-
   constructor(private afs: AngularFirestore,
     private snackBar: MatSnackBar) {
 
@@ -31,14 +29,21 @@ export class DataFilterService {
     this.sortedPricing = new BehaviorSubject('asc');
 
     this.items = Observable.combineLatest(
-      this.selectedGroup
-    ).switchMap(([selected]) =>
+      this.selectedGroup,
+      this.sortedPricing
+    ).switchMap(([selected, sortedPrice]) =>
       afs.collection('menus', ref => {
         let query: firebase.firestore.Query = ref;
         //when user select category aside from all
-        if (selected !== 'All') { query = query.where('group', '==', selected)}
+        if (sortedPrice === 'asc') {
+        if (selected !== 'All') { query = query.where('group', '==', selected).orderBy('price','asc') }
         //when user select all
-        else { query.orderBy('menuName', 'asc'); }
+        else { query = query.orderBy('price', 'asc'); }
+        } else {
+          if (selected !== 'All') { query = query.where('group', '==', selected).orderBy('price','desc') }
+          //when user select all
+          else { query = query.orderBy('price', 'desc'); }
+        }
         return query;
       }).valueChanges()
     );
@@ -52,14 +57,9 @@ export class DataFilterService {
 
   // sort price high and low
   sortedPriceEvent(sortedPrice: string | null) {
-    
-    if(sortedPrice === 'Low to High') {
-        this.$sortPrice = 'asc';
-    } else {
-        this.$sortPrice = 'dsc'
-    }
-    this.sortedPricing.next(this.$sortPrice);
-    console.log(this.$sortPrice);
+
+    this.sortedPricing.next(sortedPrice);
+    console.log(sortedPrice);
   }
 
   getItems() {

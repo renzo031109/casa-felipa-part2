@@ -22,7 +22,7 @@ export class UploadService {
 
   }
 
-  addListing(listing) {
+  addListing(listing: Listing) {
     let storageRef = firebase.storage().ref();
     for (let selectedFile of [(<HTMLInputElement>document.getElementById('image')).files[0]]) {
       let path = `/${this.basePath}/${selectedFile.name}`;
@@ -46,12 +46,12 @@ export class UploadService {
           listing.image = uploadTask.snapshot.downloadURL;
           // listing.imgName = listing.file.name;
           this.saveFileData(listing);
-          console.log(listing);
+          // console.log(listing);
         }
       );
     }
   }
-  private saveFileData(listing) {  
+  private saveFileData(listing: Listing) {  
     this.itemsCollection.add(listing);
     console.log('File saved!: ' + listing.image);
     this.openSnackBarAdd();
