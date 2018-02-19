@@ -25,7 +25,7 @@ export class AppComponent implements OnInit {
 
   links = [
     { name: 'Our Menu', path: 'menus' },
-    { name: 'Contact Us', path: 'registration' },
+    { name: 'Contact Us', path: 'contact' },
     { name: 'About Us', path: 'about'}
   ];
 

@@ -13,7 +13,6 @@ import { MenusContainerComponent } from './menus/menus-container.component';
 import { MasterDetailComponent } from './menus/master-detail/master-detail.component';
 import { ListComponent } from './menus/list/list.component';
 import { AddMenuDialogComponent } from './menus/add-menu-dialog/add-menu-dialog.component';
-import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './menus/view/view.component';
 
@@ -31,13 +30,14 @@ import { environment } from '../environments/environment';
 import { FilterPipe } from './menus/pipe/filter.pipe';
 import { MasterFileListComponent } from './menus/master-file-list/master-file-list.component';
 import { AboutComponent } from './about/about.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 
 
 const routes: Routes = [
   {path: '', redirectTo: 'menus', pathMatch: 'full'},
   {path: 'menus', component: MenusContainerComponent },
-  {path: 'registration', component: UserRegistrationComponent },
+  {path: 'contact', component: ContactUsComponent },
   {path: 'about', component: AboutComponent }
 
 ];
@@ -48,13 +48,13 @@ const routes: Routes = [
     MasterDetailComponent,
     ListComponent,
     AddMenuDialogComponent,
-    UserRegistrationComponent,
     MenusContainerComponent,
     LoginComponent,
     ViewComponent,
     FilterPipe,
     MasterFileListComponent,
-    AboutComponent
+    AboutComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,

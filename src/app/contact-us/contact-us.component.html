@@ -1,3 +1,4 @@
+
 <mat-grid-list cols="2" rowHeight="2:2">
   <mat-grid-tile>
     <mat-card>
@@ -19,15 +20,9 @@
               </mat-input-container>
 
               <mat-input-container fxFlex>
-                  <input matInput name="email" placeholder="Email" [(ngModel)]="email" email required>
-                </mat-input-container>
-            </div>
-
-            <!-- <div fxLayout="row" fxLayoutGap="16px">
-              <mat-form-field>
                 <input matInput name="email" placeholder="Email" [(ngModel)]="email" email required>
-              </mat-form-field>
-            </div> -->
+              </mat-input-container>
+            </div>
 
             <div ngModelGroup="address" fxLayout="column" fxLayoutGap="8px">
 
@@ -49,28 +44,22 @@
                   <input matInput ngModel name="zip" placeholder="Zip" required>
                 </mat-input-container>
                 <mat-input-container fxFlex>
-                    <input matInput ngModel name="country" placeholder="Country" required>
+                  <input matInput ngModel name="country" placeholder="Country" required>
                 </mat-input-container>
               </div>
             </div>
 
             <div ngModelGroup="address" fxLayout="column" fxLayoutGap="8px">
-             
-                <div fxLayout="row" fxLayoutGap="16px">
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="dateVisited" placeholder="Date of Visit" required>
-                  </mat-input-container>
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="timeVisited" placeholder="Time of Visit" required>
-                  </mat-input-container>
-                </div>
-              </div>
 
-            <!-- <mat-select name="country" placeholder="Country" ngModel required>
-              <mat-option *ngFor="let country of countries" [value]="country.code">
-                {{ country.name }}
-              </mat-option>
-            </mat-select> -->
+              <div fxLayout="row" fxLayoutGap="16px">
+                <mat-input-container fxFlex>
+                  <input matInput ngModel name="dateVisited" placeholder="Date of Visit" required>
+                </mat-input-container>
+                <mat-input-container fxFlex>
+                  <input matInput ngModel name="timeVisited" placeholder="Time of Visit" required>
+                </mat-input-container>
+              </div>
+            </div>
 
             <mat-radio-group class="gender-radio-group" ngModel name="gender" class="m-t" required>
               Gender :
@@ -79,11 +68,10 @@
               </mat-radio-button>
             </mat-radio-group>
 
-            <!-- <div fxLayout="row" fxLayoutGap="100px"> -->
             <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Leave a comment"></textarea>
-              </mat-form-field>
-            <!-- </div> -->
+              <textarea matInput placeholder="Leave a comment"></textarea>
+            </mat-form-field>
+
 
             <div fxFlexAlign="end">
               <button mat-raised-button color="accent" class="m-t">Send Message</button>
@@ -93,6 +81,23 @@
       </div>
     </mat-card>
   </mat-grid-tile>
-  <mat-grid-tile>2</mat-grid-tile>
+  <mat-grid-tile>
+
+    <mat-card style="background-color:pink">
+    <h3>Contact Information</h3>
+  <p>Angeles Branch</p>
+ <p>Address: Located at the back of Museo ning Angeles,825 Nepomuceno St. 
+   Sto. Rosario Angeles City, Pampanga, Philippines c-2009</p>
+
+ <p>(045) 625-9660 | (045) 888-3897</p>
+
+ <p>Email: casadefelipa1432@gmail.com</p>
+
+ <p>Visit us at Pampangadirectory.com</p>
+
+ </mat-card>
+ 
+  </mat-grid-tile>
 
 </mat-grid-list>
+
