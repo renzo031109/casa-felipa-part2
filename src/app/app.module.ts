@@ -15,8 +15,12 @@ import { ListComponent } from './menus/list/list.component';
 import { AddMenuDialogComponent } from './menus/add-menu-dialog/add-menu-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { ViewComponent } from './menus/view/view.component';
+import { MasterFileListComponent } from './menus/master-file-list/master-file-list.component';
+import { AboutComponent } from './about/about.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 
 import { RouterModule, Routes } from '@angular/router';
+import { appRoutes } from './router';
 
 import { UploadService } from './menus/service/upload.service';
 import { AuthenticationService } from './menus/service/authentication.service';
@@ -28,19 +32,6 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { FilterPipe } from './menus/pipe/filter.pipe';
-import { MasterFileListComponent } from './menus/master-file-list/master-file-list.component';
-import { AboutComponent } from './about/about.component';
-import { ContactUsComponent } from './contact-us/contact-us.component';
-
-
-
-const routes: Routes = [
-  {path: '', redirectTo: 'menus', pathMatch: 'full'},
-  {path: 'menus', component: MenusContainerComponent },
-  {path: 'contact', component: ContactUsComponent },
-  {path: 'about', component: AboutComponent }
-
-];
 
 @NgModule({
   declarations: [
@@ -63,7 +54,7 @@ const routes: Routes = [
     FlexLayoutModule,
     AppMaterialModule,
     FormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(appRoutes),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule
