@@ -18,6 +18,7 @@ import { ViewComponent } from './menus/view/view.component';
 import { MasterFileListComponent } from './menus/master-file-list/master-file-list.component';
 import { AboutComponent } from './about/about.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
+import { MenuCarouselComponent } from './menus/menu-carousel/menu-carousel.component';
 
 import { RouterModule, Routes } from '@angular/router';
 import { appRoutes } from './router';
@@ -33,6 +34,7 @@ import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
 import { FilterPipe } from './menus/pipe/filter.pipe';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +47,8 @@ import { FilterPipe } from './menus/pipe/filter.pipe';
     FilterPipe,
     MasterFileListComponent,
     AboutComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    MenuCarouselComponent
   ],
   imports: [
     BrowserModule,

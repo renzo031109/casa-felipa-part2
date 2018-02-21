@@ -1,106 +1,107 @@
-<div class="container">
-  <mat-grid-list cols="2" rowHeight="2:2">
+<!-- <div class="container"> -->
 
-    <mat-grid-tile>
-      <mat-card>
+<section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
 
-        <div class="user-registration-form p-a">
-          <h3>Send us your inquiry</h3>
-          <p>Thank you for visiting BBQ and Bulalo by Casa Felipa Website. Please share your thoughts or any questions, suggestions
-            and comments about your dining experience.</p>
-          <form #form="ngForm" (ngSubmit)="submitUserForm(form.value)" ngNativeValidate>
+  <div class="user-registration-form p-a">
 
-            <div fxLayout="column" fxLayoutGap="8px">
+    <mat-card class="contactInfo">
+      <h3>Contact Information</h3>
+      <p>
+        <i class="fas fa-home"></i>
+        <strong> Branch :</strong> Angeles </p>
+      <p>
+        <i class="fas fa-map-marker"></i>
+        <strong>Address :</strong> Located at the back of Museo ning Angeles,825 Nepomuceno St. Sto. Rosario Angeles City, Pampanga,
+        Philippines c-2009
+      </p>
+      <p>
+        <i class="fas fa-phone"></i>
+        <strong> Tel :</strong>(045) 625-9660 </p>
+      <p>
+        <i class="fas fa-at"></i>
+        <strong>Email : </strong>casadefelipa1432@gmail.com</p>
 
-              <div fxLayout="row" fxLayoutGap="16px">
-                <mat-input-container fxFlex>
-                  <input matInput ngModel name="firstName" placeholder="First Name" required>
-                </mat-input-container>
+    </mat-card>
+    <mat-card>
+      <h3>Send us your inquiry</h3>
+      <p>Thank you for visiting BBQ and Bulalo by Casa Felipa Website. Please share your thoughts or any questions, suggestions
+        and comments about your dining experience.</p>
+      <form #form="ngForm" (ngSubmit)="submitUserForm(form.value)" ngNativeValidate>
 
-                <mat-input-container fxFlex>
-                  <input matInput ngModel name="lastName" placeholder="Last Name" required>
-                </mat-input-container>
+        <div fxLayout="column" fxLayoutGap="8px">
 
-                <mat-input-container fxFlex>
-                  <input matInput name="email" placeholder="Email" [(ngModel)]="email" email required>
-                </mat-input-container>
-              </div>
+          <div fxLayout="row" fxLayoutGap="16px">
+            <mat-input-container fxFlex>
+              <input matInput ngModel name="firstName" placeholder="First Name" required>
+            </mat-input-container>
 
-              <div ngModelGroup="address" fxLayout="column" fxLayoutGap="8px">
+            <mat-input-container fxFlex>
+              <input matInput ngModel name="lastName" placeholder="Last Name" required>
+            </mat-input-container>
 
-                <div fxLayout="row" fxLayoutGap="16px">
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="street" placeholder="Street" required>
-                  </mat-input-container>
+            <mat-input-container fxFlex>
+              <input matInput name="email" placeholder="Email" [(ngModel)]="email" email required>
+            </mat-input-container>
+          </div>
 
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="city" placeholder="City" required>
-                  </mat-input-container>
-                </div>
+          <div ngModelGroup="address" fxLayout="column" fxLayoutGap="8px">
 
-                <div fxLayout="row" fxLayoutGap="16px">
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="state" placeholder="State" required>
-                  </mat-input-container>
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="zip" placeholder="Zip" required>
-                  </mat-input-container>
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="country" placeholder="Country" required>
-                  </mat-input-container>
-                </div>
-              </div>
+            <div fxLayout="row" fxLayoutGap="16px">
+              <mat-input-container fxFlex>
+                <input matInput ngModel name="street" placeholder="Street" required>
+              </mat-input-container>
 
-              <div ngModelGroup="address" fxLayout="column" fxLayoutGap="8px">
-
-                <div fxLayout="row" fxLayoutGap="16px">
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="dateVisited" placeholder="Date of Visit" required>
-                  </mat-input-container>
-                  <mat-input-container fxFlex>
-                    <input matInput ngModel name="timeVisited" placeholder="Time of Visit" required>
-                  </mat-input-container>
-                </div>
-              </div>
-
-              <mat-radio-group class="gender-radio-group" ngModel name="gender" class="m-t" required>
-                Gender :
-                <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders" [value]="gender">
-                  {{gender}}
-                </mat-radio-button>
-              </mat-radio-group>
-
-              <mat-form-field class="example-full-width">
-                <textarea matInput placeholder="Leave a comment"></textarea>
-              </mat-form-field>
-
-
-              <div fxFlexAlign="end">
-                <button mat-raised-button color="accent" class="m-t">Send Message</button>
-              </div>
+              <mat-input-container fxFlex>
+                <input matInput ngModel name="city" placeholder="City" required>
+              </mat-input-container>
             </div>
-          </form>
+
+            <div fxLayout="row" fxLayoutGap="16px">
+              <mat-input-container fxFlex>
+                <input matInput ngModel name="state" placeholder="State" required>
+              </mat-input-container>
+              <mat-input-container fxFlex>
+                <input matInput ngModel name="zip" placeholder="Zip" required>
+              </mat-input-container>
+              <mat-input-container fxFlex>
+                <input matInput ngModel name="country" placeholder="Country" required>
+              </mat-input-container>
+            </div>
+          </div>
+
+          <div ngModelGroup="address" fxLayout="column" fxLayoutGap="8px">
+
+            <div fxLayout="row" fxLayoutGap="16px">
+              <mat-input-container fxFlex>
+                <input matInput ngModel name="dateVisited" placeholder="Date of Visit" required>
+              </mat-input-container>
+              <mat-input-container fxFlex>
+                <input matInput ngModel name="timeVisited" placeholder="Time of Visit" required>
+              </mat-input-container>
+            </div>
+          </div>
+
+          <mat-radio-group class="gender-radio-group" ngModel name="gender" class="m-t" required>
+            Gender :
+            <mat-radio-button class="gender-radio-button" *ngFor="let gender of genders" [value]="gender">
+              {{gender}}
+            </mat-radio-button>
+          </mat-radio-group>
+
+          <mat-form-field class="example-full-width">
+            <textarea matInput placeholder="Leave a comment"></textarea>
+          </mat-form-field>
+
+
+          <div fxFlexAlign="end">
+            <button mat-raised-button color="accent" class="m-t">Send Message</button>
+          </div>
         </div>
-      </mat-card>
-    </mat-grid-tile>
+      </form>
+    </mat-card>
+  </div>
 
-    <mat-grid-tile>
 
-      <mat-card style="background-color:pink">
-        <h3>Contact Information</h3>
-        <p>Angeles Branch</p>
-        <p>Address: Located at the back of Museo ning Angeles,825 Nepomuceno St. Sto. Rosario Angeles City, Pampanga, Philippines
-          c-2009</p>
+</section>
 
-        <p>(045) 625-9660 | (045) 888-3897</p>
-
-        <p>Email: casadefelipa1432@gmail.com</p>
-
-        <p>Visit us at Pampangadirectory.com</p>
-
-      </mat-card>
-
-    </mat-grid-tile>
-
-  </mat-grid-list>
-</div>
+<!-- </div> -->

@@ -21,6 +21,11 @@ import { Observable } from 'rxjs/Observable';
         <app-master-file-list fxFlex></app-master-file-list>
       </div>
     </mat-tab>
+    <mat-tab *ngIf="(user | async)?.uid" label="Master File">
+    <div fxFlex class="menus-list-container">
+    <app-menu-carousel></app-menu-carousel>
+    </div>
+    </mat-tab>
     </mat-tab-group>
   `,
   styles: [`

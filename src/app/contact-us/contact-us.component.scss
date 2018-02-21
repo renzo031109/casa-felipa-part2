@@ -1,5 +1,5 @@
 .user-registration-form {
-    width:60%
+    width:100%
 }
 .gender-radio-group {
     display: inline-flex;
@@ -10,5 +10,11 @@
 }
 
 .example-full-width {
-    width: 180%;
+    width: 100%;
   }
+
+.contactInfo {
+    background-color:pink;
+    width: 100%;
+    margin-bottom: 10px;
+}
