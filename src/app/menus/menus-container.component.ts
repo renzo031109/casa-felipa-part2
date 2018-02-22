@@ -5,27 +5,32 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'menus-container',
   template: `
-    <mat-tab-group color="accent">
+    <mat-tab-group color="accent" [selectedIndex]="2">
+
       <mat-tab label="Menu Detailed List">
           <div fxFlex class="master-detail-container">
             <app-master-detail fxFlex></app-master-detail>
           </div>
         </mat-tab>
+
       <mat-tab label="Menu Gallery">
         <div fxFlex class="menus-list-container">
           <app-list fxFlex></app-list>
         </div>
       </mat-tab>
+
+      <mat-tab label="Intro">
+        <div fxFlex class="menus-list-container">
+          <app-menu-carousel></app-menu-carousel>
+        </div>
+      </mat-tab>
+
       <mat-tab *ngIf="(user | async)?.uid" label="Master File">
-      <div fxFlex class="menus-list-container">
-        <app-master-file-list fxFlex></app-master-file-list>
-      </div>
-    </mat-tab>
-    <mat-tab *ngIf="(user | async)?.uid" label="Master File">
-    <div fxFlex class="menus-list-container">
-    <app-menu-carousel></app-menu-carousel>
-    </div>
-    </mat-tab>
+        <div fxFlex class="menus-list-container">
+          <app-master-file-list fxFlex></app-master-file-list>
+        </div>
+      </mat-tab>
+
     </mat-tab-group>
   `,
   styles: [`

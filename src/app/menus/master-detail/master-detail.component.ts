@@ -28,6 +28,7 @@ export class MasterDetailComponent implements OnInit {
      }
 
   ngOnInit() {    
+    this.getView();
   }
 
   ngOnChanges() {
