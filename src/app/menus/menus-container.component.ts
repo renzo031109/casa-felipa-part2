@@ -5,7 +5,8 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'menus-container',
   template: `
-    <mat-tab-group color="accent" [selectedIndex]="2">
+
+    <mat-tab-group color="accent">
 
       <mat-tab label="Menu Detailed List">
           <div fxFlex class="master-detail-container">
@@ -19,7 +20,7 @@ import { Observable } from 'rxjs/Observable';
         </div>
       </mat-tab>
 
-      <mat-tab label="Intro">
+      <mat-tab label="Home">
         <div fxFlex class="menus-list-container">
           <app-menu-carousel></app-menu-carousel>
         </div>
@@ -29,7 +30,7 @@ import { Observable } from 'rxjs/Observable';
         <div fxFlex class="menus-list-container">
           <app-master-file-list fxFlex></app-master-file-list>
         </div>
-      </mat-tab>
+      </mat-tab>   
 
     </mat-tab-group>
   `,

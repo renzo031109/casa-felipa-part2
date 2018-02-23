@@ -10,6 +10,7 @@ import { DataService } from '../service/data.service';
 
 import { ViewComponent } from '../../menus/view/view.component';
 import { MatDialog } from '@angular/material';
+import { MatSidenav } from "@angular/material";
 
 @Component({
   selector: 'app-master-detail',
@@ -17,8 +18,9 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./master-detail.component.scss']
 })
 export class MasterDetailComponent implements OnInit {
-  menuView: string;
 
+  menuView: string;
+  
   items: Listing[] = [];
   selectedMenu: Listing;  
  
