@@ -24,6 +24,7 @@ export class AppComponent implements OnInit {
   user: Observable<firebase.User>;
 
   links = [
+    { name: 'Home', path: 'home' },
     { name: 'Our Menu', path: 'menus' },
     { name: 'Contact Us', path: 'contact' },
     { name: 'About Us', path: 'about'}

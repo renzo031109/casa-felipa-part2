@@ -38,8 +38,9 @@
   </mat-toolbar>
 
   <mat-sidenav-container fxFlex>
-    <mat-sidenav mode="over" #sidenav>
+    <mat-sidenav mode="over" #sidenav color="accent">
       <mat-nav-list>
+        <img src=".\assets\felipalogo.jpg">
         <a mat-list-item [href]="link.path" *ngFor="let link of links"> {{ link.name }} </a>
       </mat-nav-list>
     </mat-sidenav>

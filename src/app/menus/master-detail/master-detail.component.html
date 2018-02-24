@@ -1,7 +1,7 @@
 <div fxLayout="column" fxFlex>
     <h2 class="page-title">Our Complete Menu List</h2>
     <mat-sidenav-container flexLayout="row" fxFlex class="menus-list">
-      <mat-sidenav mode="side" opened="true" disableClose>
+      <mat-sidenav mode="side" opened disableClose>
         <mat-nav-list color="accent">
           <mat-list-item *ngFor="let item of items" (click)="selectedMenu = item" color="accent" >
             <img mat-list-avatar [src]="item.image" />
