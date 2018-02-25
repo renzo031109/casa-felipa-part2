@@ -41,7 +41,7 @@
     <mat-sidenav mode="over" #sidenav color="accent">
       <mat-nav-list>
         <img src=".\assets\felipalogo.jpg">
-        <a mat-list-item [href]="link.path" *ngFor="let link of links"> {{ link.name }} </a>
+        <a mat-list-item [href]="link.path" *ngFor="let link of links"><i class="{{link.icon}}"></i><span>&nbsp;</span>{{ link.name }} </a>
       </mat-nav-list>
     </mat-sidenav>
     <div class="content" fxLayout="column" fxFlex>

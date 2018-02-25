@@ -24,6 +24,8 @@ import { Router } from '@angular/router';
 })
 export class ListComponent implements OnInit {
 
+  sortedPrice:string;
+
   user: Observable<firebase.User>;
   menuView: string;
   items: Listing[];

@@ -13,7 +13,7 @@ import { UploadService } from '../service/upload.service';
 })
 export class AddMenuDialogComponent implements OnInit {
 
-private categories = [
+categories = [
     'Appetizer',
     'Barbeque',
     'Dessert',

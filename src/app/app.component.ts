@@ -21,13 +21,13 @@ import { ListComponent } from 'app/menus/list/list.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  user: Observable<firebase.User>;
+  user: Observable<firebase.User>;  
 
   links = [
-    { name: 'Home', path: 'home' },
-    { name: 'Our Menu', path: 'menus' },
-    { name: 'Contact Us', path: 'contact' },
-    { name: 'About Us', path: 'about'}
+    { name: 'Home', path: 'home', icon:"fas fa-home"},
+    { name: 'Our Menu', path: 'menus', icon:"fab fa-elementor"},
+    { name: 'Contact Us', path: 'contact', icon:"fas fa-phone-square" },
+    { name: 'About Us', path: 'about', icon:"fas fa-users"}
   ];
 
   constructor(private dialog: MatDialog,
