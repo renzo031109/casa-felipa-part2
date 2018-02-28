@@ -20,6 +20,7 @@ import { MatSidenav } from "@angular/material";
 export class MasterDetailComponent implements OnInit {
 
   menuView: string;
+  showSpinner: boolean = true;
   
   items: Listing[] = [];
   selectedMenu: Listing;  
@@ -39,6 +40,7 @@ export class MasterDetailComponent implements OnInit {
 
   getView() {
     this.dataService.getItems().subscribe(items => this.items = items);
+   this.showSpinner = false;
   }
 
   openView(event, selectedItem: Listing) {
