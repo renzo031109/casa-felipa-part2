@@ -25,6 +25,7 @@ import { Router } from '@angular/router';
 export class ListComponent implements OnInit {
 
   sortedPrice:string;
+  showSpinner: boolean = true;
 
   user: Observable<firebase.User>;
   menuView: string;
@@ -80,7 +81,8 @@ export class ListComponent implements OnInit {
 
 
   getView() {
-    this.dataFilterService.getItems().subscribe(items => this.items = items);
+    this.dataFilterService.getItems().subscribe(items => this.items = items);    
+    this.dataService.getItems().subscribe(() => this.showSpinner = false);
   }
 
   deleteMenu(event, item: Listing) {

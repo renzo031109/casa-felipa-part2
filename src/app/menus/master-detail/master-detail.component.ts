@@ -40,7 +40,7 @@ export class MasterDetailComponent implements OnInit {
 
   getView() {
     this.dataService.getItems().subscribe(items => this.items = items);
-   this.showSpinner = false;
+    this.dataService.getItems().subscribe(() => this.showSpinner = false);
   }
 
   openView(event, selectedItem: Listing) {
