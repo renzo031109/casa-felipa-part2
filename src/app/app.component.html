@@ -20,7 +20,7 @@
         </button>
       </div>
     </div>
-    
+
     <div *ngIf="(user | async)?.uid">
       <div class="example-tooltip-host" matTooltip="Logout">
         <button mat-mini-fab (click)="logOut()">
@@ -40,9 +40,25 @@
   <mat-sidenav-container fxFlex>
     <mat-sidenav mode="over" #sidenav color="accent">
       <mat-nav-list>
-        <img src=".\assets\felipalogo.jpg">
-        <a mat-list-item [href]="link.path" *ngFor="let link of links"><i class="{{link.icon}}"></i><span>&nbsp;</span>{{ link.name }} </a>
+        <img src=".\assets\felipalogo.jpg" class="casa-felipa-logo2">
+        <hr>
+         <a mat-list-item [href]="link.path" *ngFor="let link of links"> 
+          <i class="{{link.icon}}"></i>
+          <span>&nbsp;</span>{{ link.name }} </a>
       </mat-nav-list>
+      <br>
+      <br>
+      <hr>
+      <div>
+        <p>FOLLOW US</p>    
+        
+       <a href="https://www.facebook.com/BPbyCasaFelipa/"><img src=".\assets\facebook.png" class="socialMediaIcon"></a> 
+       <span>&nbsp;</span>
+       <a href="https://www.instagram.com/casa.felipa/"><img src=".\assets\instagram.png" class="socialMediaIcon"></a>
+       <span>&nbsp;</span>
+       <a href="https://twitter.com"><img src=".\assets\twitter.png" class="socialMediaIcon"></a>  
+
+      </div>
     </mat-sidenav>
     <div class="content" fxLayout="column" fxFlex>
       <router-outlet></router-outlet>
@@ -53,6 +69,7 @@
 
 <footer class='container text-center'>
   <hr/>
-  <div style="text-align:center; color:#979797"> &copy;  Barbeque and Bulalo  by Casa Felipa | <strong>renzoft.dev</strong>
+  <div style="text-align:center; color:#979797"> &copy; Barbeque and Bulalo by Casa Felipa |
+    <strong>renzoft.dev</strong>
   </div>
 </footer>

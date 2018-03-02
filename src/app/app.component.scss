@@ -1,0 +1,42 @@
+mat-sidenav {
+  width: 225px;
+  text-align:center;
+  background-color:rgba(245, 245, 245, 0.8);
+  box-shadow:#555 2px 2px 10px 2px;
+}
+mat-toolbar{
+  height:75px;
+}
+
+.casa-felipa-logo{
+  margin-top:1px;
+  border: 2px solid #FF4081;  
+}
+
+.casa-felipa-logo2 {
+  box-shadow:#555 2px 2px 10px 2px;
+}
+
+.socialMediaIcon {
+  height:40px;
+}
+
+.socialMediaIcon {
+  transition: all .2s ease-in-out;
+  background-color: rgba(245, 245, 245, 0.4);
+  box-shadow:#555 2px 2px 10px 2px;
+  &:hover {
+      transform: scale(1.2); 
+      border: 2px solid #FF4081;  
+      background-color: #FF4081;  
+  }
+} 
+
+// #facebookIcon {
+//   background-image: url('.\assets\facebook-black.gif');
+//   height: 70px;
+//   width: 120px;
+// }
+// /* #facebookIcon:hover {
+//   background-image: url('.\assets\facebook-blue.png');
+// }  */

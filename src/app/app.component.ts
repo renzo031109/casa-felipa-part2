@@ -18,7 +18,7 @@ import { ListComponent } from 'app/menus/list/list.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
   user: Observable<firebase.User>;  
