@@ -42,21 +42,26 @@
       <mat-nav-list>
         <img src=".\assets\felipalogo.jpg" class="casa-felipa-logo2">
         <hr>
-         <a mat-list-item [href]="link.path" *ngFor="let link of links"> 
+        <a mat-list-item [href]="link.path" *ngFor="let link of links">
           <i class="{{link.icon}}"></i>
           <span>&nbsp;</span>{{ link.name }} </a>
       </mat-nav-list>
       <br>
-      <br>
       <hr>
       <div>
-        <p>FOLLOW US</p>    
-        
-       <a href="https://www.facebook.com/BPbyCasaFelipa/"><img src=".\assets\facebook.png" class="socialMediaIcon"></a> 
-       <span>&nbsp;</span>
-       <a href="https://www.instagram.com/casa.felipa/"><img src=".\assets\instagram.png" class="socialMediaIcon"></a>
-       <span>&nbsp;</span>
-       <a href="https://twitter.com"><img src=".\assets\twitter.png" class="socialMediaIcon"></a>  
+        <p>FOLLOW US</p>
+
+        <a href="https://www.facebook.com/BPbyCasaFelipa/">
+          <img src=".\assets\facebook.png" class="socialMediaIcon">
+        </a>
+        <span>&nbsp;</span>
+        <a href="https://www.instagram.com/casa.felipa/">
+          <img src=".\assets\instagram.png" class="socialMediaIcon">
+        </a>
+        <span>&nbsp;</span>
+        <a href="https://twitter.com">
+          <img src=".\assets\twitter.png" class="socialMediaIcon">
+        </a>
 
       </div>
     </mat-sidenav>
