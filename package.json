@@ -1,10 +1,10 @@
 {
-  "name": "book-store-start",
+  "name": "casa-felipa",
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "node server.js",
+    "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",

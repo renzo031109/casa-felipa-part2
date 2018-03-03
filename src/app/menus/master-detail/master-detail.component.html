@@ -1,50 +1,63 @@
+<div fxLayout="column" fxFlex>
+  <h2 class="page-title">Our Complete Menu List</h2>
 
-<div fxLayout="column" fxFlex >
-    <h2 class="page-title">Our Complete Menu List</h2>
+  <mat-spinner *ngIf="showSpinner" color="accent" class="loading">
+  </mat-spinner>
 
-    <mat-spinner *ngIf="showSpinner" color="accent" class="loading">
-      </mat-spinner>
+  <mat-sidenav-container flexLayout="row" fxFlex class="menus-list">
+    <mat-sidenav mode="side" opened disableClose>
+      <mat-nav-list color="accent">
+        <mat-list-item *ngFor="let item of items" (click)="selectedMenu = item" color="accent">
+          <img mat-list-avatar [src]="item.image" />
+          <h2 mat-line>{{item.menuName}}</h2>`
+          <p mat-line> {{item.description}} </p>
+        </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <div class="menus-list-item" fxFlex>
+      <div *ngIf="selectedMenu; else noSelect" class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
+        <div class="menus-list-item--coverimage">
+          <img [src]="selectedMenu.image" />
+        </div>
+        <div class="menus-list-item--content" fxFlex>
+          <h3>
+            <strong>{{selectedMenu.menuName}}</strong>
+          </h3>
+          <p>
+            <strong>Details:</strong>
+            <span>&nbsp;</span>{{selectedMenu.description}}</p>
+          <p>
+            <strong>Category:</strong>
+            <span>&nbsp;</span>{{selectedMenu.group}}</p>
+          <p>
+            <strong>Price: </strong>
+            <span>&nbsp;</span>Php {{selectedMenu.price}}</p>
+          <button mat-raised-button color="accent" (click)="openView($event,selectedMenu)">View Full Image</button>
+        </div>
+      </div>
 
-    <mat-sidenav-container flexLayout="row" fxFlex class="menus-list">
-      <mat-sidenav mode="side" opened disableClose>
-        <mat-nav-list color="accent">
-          <mat-list-item *ngFor="let item of items" (click)="selectedMenu = item" color="accent" >
-            <img mat-list-avatar [src]="item.image" />
-            <h2 mat-line>{{item.menuName}}</h2>`
-            <p mat-line> {{item.description}} </p>
-          </mat-list-item>
-        </mat-nav-list>
-      </mat-sidenav>
-      <div class="menus-list-item" fxFlex>
-        <div *ngIf="selectedMenu; else noSelect" class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
+      <ng-template #noSelect>
+        <div *ngFor="let display of items | slice:0:1; " class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
           <div class="menus-list-item--coverimage">
-            <img [src]="selectedMenu.image"/>
+            <img [src]="display.image">
           </div>
           <div class="menus-list-item--content" fxFlex>
-            <h3><strong>{{selectedMenu.menuName}}</strong></h3>
-            <p>{{selectedMenu.description}}</p>
-            <p>{{selectedMenu.group}}</p>
-            <p>Php {{selectedMenu.price}}</p>
-            <button mat-raised-button color="accent" (click)="openView($event,selectedMenu)">View Full Image</button>
+            <h3>
+              <strong>{{display.menuName}}</strong>
+            </h3>
+            <p>
+              <strong>Details:</strong>
+              <span>&nbsp;</span>{{display.description}}</p>
+            <p>
+              <strong>Category:</strong>
+              <span>&nbsp;</span>{{display.group}}</p>
+            <p>
+              <strong>Price: </strong>
+              <span>&nbsp;</span>Php {{display.price}}</p>
           </div>
-        </div>   
-        
-        <ng-template #noSelect>
-            <div *ngFor="let display of items | slice:0:1; " class="menus-list-item--detail" fxLayout="row" fxFlex.sm="column">
-                <div class="menus-list-item--coverimage">
-                  <img [src]="display.image"/>
-                </div>
-                <div class="menus-list-item--content" fxFlex>
-                  <h3><strong>{{display.menuName}}</strong></h3>
-                  <p>{{display.description}}</p>
-                  <p>{{display.group}}</p>
-                  <p>Php {{display.price}}</p>                 
-                </div>
-              </div>       
-        </ng-template>  
-        
-      </div>
-    </mat-sidenav-container>
-  </div>
-  
-  
+        </div>
+      </ng-template>
+
+    </div>
+  </mat-sidenav-container>
+</div>

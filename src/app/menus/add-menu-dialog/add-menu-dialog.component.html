@@ -1,6 +1,6 @@
-<div class="formdialog">
+<div class="formdialog" fxFlex>
   <mat-toolbar>
-    <h3>Add Menu</h3>
+    <div class="addMenuTitle"><h3>ADD MENU</h3></div>
   </mat-toolbar>
   <br>
 
@@ -15,19 +15,6 @@
       <mat-form-field>
         <input matInput name="description" placeholder="Description" [(ngModel)]="description" required>
       </mat-form-field>
-
-      <!-- <mat-form-field>
-        <input matInput name="group" placeholder="Group" [(ngModel)]="group" required>
-      </mat-form-field> -->
-
-      <!-- <mat-form-field>
-        <mat-select [(value)]="group" placeholder="Choose a Category" required>
-          <mat-option value="Appetizer">Appetizer</mat-option>
-          <mat-option value="Drinks">Drinks</mat-option>
-          <mat-option value="Silog">Silog</mat-option>
-          <mat-option value="Soup">Soup</mat-option>  
-        </mat-select>
-      </mat-form-field> -->
 
       <mat-form-field>
         <mat-select placeholder="Category" [(ngModel)]="group" name="group" required>
@@ -50,7 +37,7 @@
       </mat-card>
     </div>
 
-    <mat-dialog-actions align="end">
+    <mat-dialog-actions align="center">
       <button mat-button type="button" (click)="dialogRef.close()">Cancel</button>
       <button mat-raised-button color="accent" (click)="onSubmit()" [disabled]="!price">Save Book</button>
     </mat-dialog-actions>
