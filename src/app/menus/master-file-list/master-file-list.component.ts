@@ -65,8 +65,9 @@ selectedCategory: string = this.categories[0];
     this.dataService.getItems().subscribe(items => this.items = items);
   }
 
-  deleteMenu(event, item: Listing) {
-    this.dataService.deleteItem(item);
+  deleteMenu(event, item: Listing, imgName) {
+    this.dataService.deleteItem(item, imgName);
+    // console.log("menu name is :", imgName);
   }
 
   openView(event, item: Listing) {

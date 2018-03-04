@@ -5,5 +5,6 @@ export interface Listing {
   group?: string;
   price?: number;
   image?: any;
+  imgName?:string;
 
  }

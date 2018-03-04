@@ -44,16 +44,16 @@ export class UploadService {
         // 3.) success observer
         (): any => {
           listing.image = uploadTask.snapshot.downloadURL;
-          // listing.imgName = listing.file.name;
+          listing.imgName = selectedFile.name;
           this.saveFileData(listing);
-          // console.log(listing);
+          console.log(listing.imgName);
         }
       );
     }
   }
   private saveFileData(listing: Listing) {  
     this.itemsCollection.add(listing);
-    console.log('File saved!: ' + listing.image);
+    // console.log('File saved!: ' + listing.image);
     this.openSnackBarAdd();
   }
 

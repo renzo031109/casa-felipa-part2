@@ -19,24 +19,38 @@ export class DataService {
   constructor(private afs: AngularFirestore,
     private snackBar: MatSnackBar) {
 
-      this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
+    this.itemsCollection = this.afs.collection('menus', ref => ref.orderBy('menuName', 'asc'));
 
-      this.items = this.itemsCollection.snapshotChanges().map(changes => {
-        return changes.map(datas => {
-          const data = datas.payload.doc.data() as Listing;
-          data.id = datas.payload.doc.id;
-          return data;
-        });
+    this.items = this.itemsCollection.snapshotChanges().map(changes => {
+      return changes.map(datas => {
+        const data = datas.payload.doc.data() as Listing;
+        data.id = datas.payload.doc.id;
+        return data;
       });
+    });
   }
 
   getItems() {
     return this.items;
   }
 
-  deleteItem(item: Listing) {
+  deleteItem(item: Listing, imgName: string) {
+
     this.itemDoc = this.afs.doc(`/${this.basePath}/${item}`);
     this.itemDoc.delete();
+
+    // Points to the root reference
+    let storageRef = firebase.storage().ref();
+    // Points to 'images'
+    let imagesRef = storageRef.child(`/${this.basePath}/${imgName}`);
+    // console.log("success",imagesRef);
+    // Delete the file
+    imagesRef.delete().then(function () {
+      // console.log("success", imagesRef);
+    }).catch(function (error) {
+      // Uh-oh, an error occurred!
+    });
+
     this.openSnackBarDel()
   }
 

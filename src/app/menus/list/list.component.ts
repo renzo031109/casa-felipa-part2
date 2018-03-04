@@ -85,9 +85,9 @@ export class ListComponent implements OnInit {
     this.dataService.getItems().subscribe(() => this.showSpinner = false);
   }
 
-  deleteMenu(event, item: Listing) {
-    this.dataService.deleteItem(item);
-  }
+  // deleteMenu(event, item: Listing) {
+  //   this.dataService.deleteItem(item);
+  // }
 
   openView(event, item: Listing) {
     let menuView = this.view.open(ViewComponent);

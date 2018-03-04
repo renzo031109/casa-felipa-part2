@@ -64,11 +64,11 @@ export class DataFilterService {
     return this.items;
   }
 
-  deleteItem(item: Listing) {
-    this.itemDoc = this.afs.doc(`/${this.basePath}/${item}`);
-    this.itemDoc.delete();
-    this.openSnackBarDel()
-  }
+  // deleteItem(item: Listing) {
+  //   this.itemDoc = this.afs.doc(`/${this.basePath}/${item}`);
+  //   this.itemDoc.delete();
+  //   this.openSnackBarDel()
+  // }
 
   openSnackBarDel() {
     this.snackBar.open('Menu deleted successfully', 'CLOSE', {
