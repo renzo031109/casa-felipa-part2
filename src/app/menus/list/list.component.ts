@@ -33,13 +33,13 @@ export class ListComponent implements OnInit {
   $sortPrice:string;
 
   categories = [
-    'All',
-    'Appetizer',
-    'Barbeque',
-    'Dessert',
-    'Drinks',
-    'Silog',
-    'Soup'
+    'All',    
+    'ALA-CARTE',
+    'APPETIZER',
+    'BBQ',
+    'DRINKS',
+    'EXTRAS',
+    'SILOG'
   ];
 
   prices = [

@@ -14,16 +14,18 @@ import { UploadService } from '../service/upload.service';
 export class AddMenuDialogComponent implements OnInit {
 
 categories = [
-    'Appetizer',
-    'Barbeque',
-    'Dessert',
-    'Drinks',
-    'Silog',
-    'Soup'
+    'All',
+    'ALA-CARTE',
+    'APPETIZER',
+    'BBQ',
+    'DRINKS',
+    'EXTRAS',
+    'SILOG'
 ];
 
   menuName: string;
   description: string;
+  promos: string;
   group: string;
   price: number;
   image: any;
@@ -39,6 +41,7 @@ categories = [
     let listing = {
       menuName: this.menuName,
       description: this.description,
+      promos: this.promos,
       group: this.group,
       price: this.price
     };

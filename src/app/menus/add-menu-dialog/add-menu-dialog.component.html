@@ -17,6 +17,10 @@
       </mat-form-field>
 
       <mat-form-field>
+        <input matInput name="promos" placeholder="Promos" [(ngModel)]="promos">
+      </mat-form-field>
+
+      <mat-form-field>
         <mat-select placeholder="Category" [(ngModel)]="group" name="group" required>
           <mat-option *ngFor="let category of categories" [value]="category">
             {{ category }}
