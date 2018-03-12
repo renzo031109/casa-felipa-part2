@@ -25,7 +25,7 @@ categories = [
 
   menuName: string;
   description: string;
-  promos: string;
+  promos: string = '';
   group: string;
   price: number;
   image: any;
