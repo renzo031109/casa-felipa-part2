@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-contact-us',
@@ -16,12 +17,17 @@ export class ContactUsComponent implements OnInit {
   ];
 
   submitUserForm(value: Object) {
+    this.router.navigateByUrl('menus');
     console.log(value)
   }
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
   }
+
+  // sendMessage() {
+
+  // }
 
 }

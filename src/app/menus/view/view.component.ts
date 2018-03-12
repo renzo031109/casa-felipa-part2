@@ -11,6 +11,7 @@ export class ViewComponent implements OnInit {
   menuImage: string ='';
   menuName: string = '';
   menuPrice: number = 0;
+  menuPromos: string = '';
 
   
   constructor(public viewImage: MatDialogRef<ViewComponent>) { }
@@ -19,7 +20,4 @@ export class ViewComponent implements OnInit {
   ngOnInit() {
   }
 
-  // menuViewImage(menu: string) {
-  //   this.menu = menu;
-  // }
 }

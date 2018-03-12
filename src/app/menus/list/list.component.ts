@@ -94,6 +94,7 @@ export class ListComponent implements OnInit {
     menuView.componentInstance.menuImage = item.image;
     menuView.componentInstance.menuName = item.menuName;
     menuView.componentInstance.menuPrice = item.price;
+    menuView.componentInstance.menuPromos = item.promos;
   }
 
 }

@@ -48,6 +48,7 @@ export class MasterDetailComponent implements OnInit {
     menuView.componentInstance.menuImage = selectedItem.image;
     menuView.componentInstance.menuName = selectedItem.menuName;
     menuView.componentInstance.menuPrice = selectedItem.price;
+    menuView.componentInstance.menuPromos = selectedItem.promos;
     console.log(selectedItem);
   }
 

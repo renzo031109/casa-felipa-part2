@@ -26,7 +26,7 @@ export class DataFilterService {
     private snackBar: MatSnackBar) {
 
     this.selectedGroup = new BehaviorSubject('All');
-    this.sortedPricing = new BehaviorSubject('asc');
+    this.sortedPricing = new BehaviorSubject('desc');
 
     this.items = Observable.combineLatest(
       this.selectedGroup,
@@ -70,12 +70,12 @@ export class DataFilterService {
   //   this.openSnackBarDel()
   // }
 
-  openSnackBarDel() {
-    this.snackBar.open('Menu deleted successfully', 'CLOSE', {
-      panelClass: ['snack-bar-color'],
-      duration: 4000
-    });
-  }
+  // openSnackBarDel() {
+  //   this.snackBar.open('Menu deleted successfully', 'CLOSE', {
+  //     panelClass: ['snack-bar-color'],
+  //     duration: 4000
+  //   });
+  // }
 
 
 
