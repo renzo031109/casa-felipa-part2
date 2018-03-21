@@ -36,8 +36,8 @@
   <div *ngIf="items?.length > 0; else noMenu">
 
     <section fxLayout="row" fxLayoutWrap fxLayout.sm="column" fxLayoutGap="24px" fxLayoutAlign="center">
-      <mat-card class="menu-card" *ngFor="let item of items ">
-        <img mat-card-image src="{{item.image}}" (click)="openView($event,item)" class="imageMenu">
+      <mat-card class="menu-card" *ngFor="let item of items " (click)="openView($event,item)">
+        <img mat-card-image src="{{item.image}}"  class="imageMenu">
         <p>{{item.menuName}}</p>
         <p>
           <strong>Php {{item.price}}</strong>
